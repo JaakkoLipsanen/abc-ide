@@ -1,14 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Jaakko
- */
-public class Main {
+
+import com.flai.ide.pages.EditorPage;
+import com.flai.ide.pages.Page;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    private Page _currentPage = createDefaultPage();
     public static void main(String[] args) {   
-        System.out.println("Hello ide");
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("abc-ide");      
+        
+        final Scene scene = _currentPage.createScene();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    private Page createDefaultPage() {
+        return new EditorPage();
     }
 }

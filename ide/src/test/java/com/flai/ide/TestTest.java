@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  */
 public class TestTest {
     
-    private Notepad _main;
+  //  private Notepad _main;
     public TestTest() {
     }
     
@@ -31,7 +31,7 @@ public class TestTest {
     
     @Before
     public void setUp() {
-        _main = new Notepad(4);
+     //   _main = new Notepad(4);
     }
     
     @After
@@ -43,6 +43,6 @@ public class TestTest {
     //
      @Test
      public void hello() {
-         assertEquals(_main.getI(), 3);
+      //   assertEquals(_main.getI(), 3);
      }
 }

@@ -7,13 +7,14 @@ package com.flai.ide;
 public class StringHelper {
 	/**
 	 * If the difference between the two strings is a simple insertion (aka if newValue can be constructed
-	 * by appending some text to the oldValue), then this method returns an TextInsert object that contains
+	 * by inserting some text to the oldValue), then this method returns an TextInsert object that contains
 	 * the start index and the inserted text
 	 * @param oldValue the old string
 	 * @param newValue the new string
-	 * @return a TextInsert object containing the start index and the inserted text
+	 * @return a TextInsert object (containing the start index and the inserted text), 
+	 * OR NULL if the difference is not an simple insertion
 	 */
-	public static TextInsert isStringChangeInsert(String oldValue, String newValue) {
+	public static TextInsert isStringDifferenceAnInsertion(String oldValue, String newValue) {
 		if(newValue.length() <= oldValue.length()) {
 			return null;
 		}
@@ -23,17 +24,16 @@ public class StringHelper {
 		
 		int differentCharacterCount = 0;
 		// find the first index/value that is different
-		for(int i = 0; i < oldValue.length(); i++) {
+		for(int i = 0; i - differentCharacterCount < oldValue.length(); i++) {
 			if(oldValue.charAt(i - differentCharacterCount) != newValue.charAt(i)) {
 				if(firstDifferentIndex == -1) {
 					firstDifferentIndex = i;
+					lastDifferentIndex = i;
 				}
-				else if(lastDifferentIndex == -1 || lastDifferentIndex == i - 1) {
+				else if(lastDifferentIndex == i - 1) {
 					lastDifferentIndex = i;
 				}
 				else { // there is a gap somewhere -> not an insert but multiple inserts
-					System.out.println(firstDifferentIndex + " ssss  " + lastDifferentIndex);
-		
 					return null;
 				}	
 				
@@ -46,11 +46,12 @@ public class StringHelper {
 			firstDifferentIndex = oldValue.length();
 			lastDifferentIndex = newValue.length() - 1;
 		}
-		else if(lastDifferentIndex == -1) {
-			lastDifferentIndex = firstDifferentIndex;
+		// if the first value wasn't at the end of the string, BUT the last character of strings is different, then incorrect
+		else if(newValue.length() != oldValue.length() + (lastDifferentIndex - firstDifferentIndex + 1)) {
+			return null; 
 		}
 
-		return new TextInsert(firstDifferentIndex, newValue.substring(firstDifferentIndex, lastDifferentIndex));
+		return new TextInsert(firstDifferentIndex, newValue.substring(firstDifferentIndex, lastDifferentIndex + 1));
 	}
 	
 	public static class TextInsert {

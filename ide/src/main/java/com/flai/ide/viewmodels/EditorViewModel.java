@@ -15,9 +15,7 @@ public class EditorViewModel {
 	/**
 	 * The current code snippet file that is being edited/displayed in GUI.
 	 */
-    private CodeSnippetViewModel _currentSnippet = 
-			new CodeSnippetViewModel(createDefaultCodeSnippet());
-	
+    private CodeSnippetViewModel _currentSnippet = new CodeSnippetViewModel(createDefaultCodeSnippet());
     public EditorViewModel() {      
     }
 	

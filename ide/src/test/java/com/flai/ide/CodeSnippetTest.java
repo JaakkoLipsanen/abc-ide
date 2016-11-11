@@ -4,10 +4,9 @@ package com.flai.ide;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.flai.ide.model.CodeSnippet;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,23 +14,15 @@ import static org.junit.Assert.*;
  *
  * @author Jaakko
  */
-public class TestTest {
+public class CodeSnippetTest {
     
-  //  private Notepad _main;
-    public TestTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
+    private CodeSnippet _snippet;
+    public CodeSnippetTest() {
     }
     
     @Before
     public void setUp() {
-     //   _main = new Notepad(4);
+		_snippet = new CodeSnippet("123");
     }
     
     @After
@@ -42,7 +33,13 @@ public class TestTest {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void hello() {
-      //   assertEquals(_main.getI(), 3);
+     public void initialValueCorrect() {
+         assertEquals(_snippet.getText(), "123");
+     }
+	 
+	  @Test
+     public void setTextWorks() {
+		 _snippet.setText("321");
+         assertEquals(_snippet.getText(), "321");
      }
 }

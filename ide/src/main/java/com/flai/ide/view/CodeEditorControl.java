@@ -55,7 +55,7 @@ public class CodeEditorControl implements Control {
 		if(!parsedCode.equals(newValue)) {
 			_isUpdatingParsedCode = true;
 			
-			StringHelper.TextInsert insert = StringHelper.isStringChangeInsert(oldValue, newValue);
+			StringHelper.TextInsert insert = StringHelper.isStringDifferenceAnInsertion(oldValue, newValue);
 			if(insert != null) { // if insert is null, then the modification was not a simple insert, so we cant use the insertText call
 				// insertText call keeps the caret/cursor position, where as replaceText does not
 				_codeTextControl.insertText(insert.StartIndex + 1, insert.InsertedText);

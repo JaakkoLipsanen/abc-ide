@@ -27,6 +27,7 @@ public class CodeSnippetViewModel {
 			_snippet.setText(newValue);
 			/* todo: if new line ("\n"), then add proper indentation */
 			/* todo: syntax highlighting? */
+			/* todo: and all of the above should happen in CodeSnippet.setText, right? */
 		}
 		
 		return _snippet.getText();

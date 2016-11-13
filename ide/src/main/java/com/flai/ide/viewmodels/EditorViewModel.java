@@ -6,6 +6,7 @@
 package com.flai.ide.viewmodels;
 
 import com.flai.ide.model.CodeSnippet;
+import com.flai.ide.model.ProgrammingLanguage;
 
 /**
  *
@@ -42,6 +43,6 @@ public class EditorViewModel {
 				"	public static void main(String[] args) {" + "\n" + 
 				"		System.out.println(\"Hello World!\");" + "\n" +
 				"	}" + "\n" +
-				"}");
+				"}", ProgrammingLanguage.JAVA);
     }
 }

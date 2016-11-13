@@ -148,4 +148,41 @@ public class StringHelperTest {
 		assertFalse((a == null && b != null) || (a != null && b == null) );
 		assertTrue((a == b) || (a.StartIndex == b.StartIndex && a.InsertedText.equals(b.InsertedText)));
 	}
+	
+	
+	@Test
+	public void repeatWorks() {
+		assertEquals(StringHelper.repeat('a', 0), "");	
+	}
+	
+	@Test
+	public void repeatWorks2() {
+		assertEquals(StringHelper.repeat('a', 1), "a");	
+	}
+	
+	@Test
+	public void repeatWorks3() {
+		assertEquals(StringHelper.repeat('a', 10), "aaaaaaaaaa");	
+	}
+	
+	@Test
+	public void repeatWorks4() {
+		assertEquals(StringHelper.repeat('\t', 3), "\t\t\t");	
+	}
+	
+	
+	@Test
+	public void insertWorks1() {
+		assertEquals(StringHelper.insert("a", 1, "b"), "ab");	
+	}
+	
+	@Test
+	public void insertWorks2() {
+		assertEquals(StringHelper.insert("a", 0, "b"), "ba");	
+	}
+	
+	@Test
+	public void insertWorks3() {
+		assertEquals(StringHelper.insert("abc", 2, "123"), "ab123c");	
+	}
 }

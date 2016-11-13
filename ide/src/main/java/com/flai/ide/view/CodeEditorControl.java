@@ -40,9 +40,9 @@ public class CodeEditorControl implements Control {
         return _codeTextControl;
 	}
 	
-	private boolean _isUpdatingParsedCode = false;
+	private boolean _isUpdatingProcessedCode = false;
 	private void onControlTextChanged(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-		if(_isUpdatingParsedCode) {
+		if(_isUpdatingProcessedCode) {
 			// okay.. if _isUpdatingParsedCode is true, then this call is not coming
 			// because the user wrote new code, but rather because the user wrote new code AND THEN
 			// the user written code was changed further by _editor.getCurrentCodeSnippet().setAndParseNewCode(newValue) call. So in this case,
@@ -50,22 +50,21 @@ public class CodeEditorControl implements Control {
 			return; 
 		} 
 		
-		String parsedCode = _editor.getCurrentCodeSnippet().setAndParseNewCode(newValue);
-		
-		if(!parsedCode.equals(newValue)) {
-			_isUpdatingParsedCode = true;
+		String processedCode = _editor.getCurrentCodeSnippet().setAndProcessNewCode(newValue, _codeTextControl.getCaretPosition());	
+		if(!processedCode.equals(newValue)) {
+			_isUpdatingProcessedCode = true;
 			
-			StringHelper.TextInsert insert = StringHelper.isStringDifferenceAnInsertion(oldValue, newValue);
+			StringHelper.TextInsert insert = StringHelper.isStringDifferenceAnInsertion(newValue, processedCode);
 			if(insert != null) { // if insert is null, then the modification was not a simple insert, so we cant use the insertText call
 				// insertText call keeps the caret/cursor position, where as replaceText does not
-				_codeTextControl.insertText(insert.StartIndex + 1, insert.InsertedText);
+				_codeTextControl.insertText(insert.StartIndex, insert.InsertedText);
 			
 			}
 			else {
 				_codeTextControl.replaceText(newValue);
 			}
 
-			_isUpdatingParsedCode = false;
+			_isUpdatingProcessedCode = false;
 		}
 	}
 }

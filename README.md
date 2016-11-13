@@ -6,3 +6,5 @@ Will support auto-indent, syntax higlighting and running/compiling files with a 
 [Tuntikirjaus](/dokumentaatio/tuntikirjaus.md)
 
 [Aiheenmäärittely](/dokumentaatio/aihemäärittely.md)
+
+[Luokkakaavio](/dokumentaatio/luokkakaavio.png)

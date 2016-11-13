@@ -1,6 +1,7 @@
 package com.flai.ide;
 
 import com.flai.ide.model.CodeSnippet;
+import com.flai.ide.model.ProgrammingLanguage;
 import com.flai.ide.viewmodels.CodeSnippetViewModel;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -18,7 +19,7 @@ public class CodeSnippetViewModelTest {
 
 	@Before
 	public void setUp() {
-		_vm = new CodeSnippetViewModel(new CodeSnippet("test"));
+		_vm = new CodeSnippetViewModel(new CodeSnippet("test", ProgrammingLanguage.JAVA));
 	}
 	
 
@@ -29,12 +30,12 @@ public class CodeSnippetViewModelTest {
 	 
 	 @Test
 	 public void setCodeWorks() {
-		 _vm.setAndParseNewCode("test2");
+		 _vm.setAndProcessNewCode("test2", 0);
 		 assertEquals(_vm.getCode(), "test2");
 	 }
 	 
 	 @Test
 	 public void setCodeWorks2() {
-		 assertEquals(_vm.setAndParseNewCode("test2"), "test2");
+		 assertEquals(_vm.setAndProcessNewCode("test2", 0), "test2");
 	 }
 }

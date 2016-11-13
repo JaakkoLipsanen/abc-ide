@@ -1,3 +1,4 @@
+package com.flai.ide;
 
 import com.flai.ide.pages.EditorPage;
 import com.flai.ide.pages.Page;

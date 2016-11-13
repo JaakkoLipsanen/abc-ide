@@ -5,6 +5,7 @@ package com.flai.ide;
  * and open the template in the editor.
  */
 import com.flai.ide.model.CodeSnippet;
+import com.flai.ide.model.ProgrammingLanguage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class CodeSnippetTest {
     
     @Before
     public void setUp() {
-		_snippet = new CodeSnippet("123");
+		_snippet = new CodeSnippet("123", ProgrammingLanguage.JAVA);
     }
     
     @After
@@ -41,5 +42,10 @@ public class CodeSnippetTest {
      public void setTextWorks() {
 		 _snippet.setText("321");
          assertEquals(_snippet.getText(), "321");
+     }
+	 
+	  @Test
+     public void programmingLanguageWorks() {
+         assertEquals(_snippet.getLanguage(), ProgrammingLanguage.JAVA);
      }
 }

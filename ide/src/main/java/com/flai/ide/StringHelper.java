@@ -1,10 +1,27 @@
 package com.flai.ide;
 
+import java.util.Arrays;
+
 /**
  * A collection of static helper methods relating to Strings
  * @author Jaakko
  */
 public class StringHelper {
+	
+	public static String repeat(char c, int n) {
+		char[] chars = new char[n];
+		Arrays.fill(chars, c);
+		
+		return new String(chars);
+	}
+	
+	public static String insert(String original, int index, String stringToInsert) {
+		String start = original.substring(0, index);
+		String end = original.substring(index);
+		
+		return start + stringToInsert + end;
+	}
+	
 	/**
 	 * If the difference between the two strings is a simple insertion (aka if newValue can be constructed
 	 * by inserting some text to the oldValue), then this method returns an TextInsert object that contains
@@ -56,11 +73,14 @@ public class StringHelper {
 	
 	public static class TextInsert {
 		public final int StartIndex;
+		public final int EndIndex;
 		public final String InsertedText;
 		
 		public TextInsert(int startIndex, String insertedText) {
 			this.StartIndex = startIndex;
 			this.InsertedText = insertedText;
+				
+			this.EndIndex = this.StartIndex + this.InsertedText.length();
 		}
 	}
 }

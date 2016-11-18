@@ -8,4 +8,4 @@ Will support auto-indent, syntax higlighting and running/compiling files with a 
 - [Luokkakaavio](/dokumentaatio/luokkakaavio.png)
 
 - [PIT-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/pit-raportti/index.html)
-- [Checkstyle-raportti]((https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
+- [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)

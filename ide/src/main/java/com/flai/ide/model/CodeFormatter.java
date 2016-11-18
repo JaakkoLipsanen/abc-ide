@@ -10,15 +10,16 @@ package com.flai.ide.model;
  * @author Jaakko
  */
 public interface CodeFormatter {
-	public String processNewCode(String oldCode, String newCode, int caretPosition);	
+
+	public String processNewCode(String oldCode, String newCode, int caretPosition);
  // public SyntaxHighlight calculateSyntaxHighlighting(String code);
-	
+
 	public static CodeFormatter create(ProgrammingLanguage language) {
-		switch(language) {
+		switch (language) {
 			case JAVA:
 				return new JavaCodeFormatter();
 		}
-		
+
 		throw new IllegalArgumentException("");
 	}
 }

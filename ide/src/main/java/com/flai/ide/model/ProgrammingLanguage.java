@@ -10,6 +10,7 @@ package com.flai.ide.model;
  * @author Jaakko
  */
 public enum ProgrammingLanguage {
+
 	JAVA,
 //  C#
 //  C++

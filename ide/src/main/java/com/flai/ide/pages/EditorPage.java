@@ -23,9 +23,8 @@ public class EditorPage implements Page {
        
         mainContentHolder.setTop(createToolBar()); // sets the toolbar to at the top of the window
         mainContentHolder.setCenter(createCodeEditor()); // sets the code editor to not be attached to any border (top/left/down/right) of the window
-        
-        final Scene scene = new Scene(mainContentHolder, 600, 800);    
-        return scene;
+		
+        return new Scene(mainContentHolder, 600, 800);
     }
     
 	/**
@@ -33,9 +32,9 @@ public class EditorPage implements Page {
 	 * @return the javafx.Node that contains the toolbar
 	 */
     private Node createToolBar() {
-		Button testButton = new Button("test");
+		final Button testButton = new Button("test");
 		testButton.setOnAction(event -> {
-			System.out.println(_editorViewModel.getCurrentCodeSnippet().getCode());
+			/* tadaa */
 		});
 		
         final ToolBar toolBar = new ToolBar(

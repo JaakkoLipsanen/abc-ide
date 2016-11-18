@@ -9,7 +9,7 @@ import com.flai.ide.model.CodeSnippet;
  */
 public class CodeSnippetViewModel {
     private final CodeSnippet _snippet;
-	private CodeFormatter _codeFormatter;
+	private final CodeFormatter _codeFormatter;
     
     public CodeSnippetViewModel(CodeSnippet snippet) {
         _snippet = snippet;
@@ -33,11 +33,10 @@ public class CodeSnippetViewModel {
 		if(!newCode.equals(_snippet.getText())) {
 			String processedCode = _codeFormatter.processNewCode(_snippet.getText(), newCode, caretPosition);
 			_snippet.setText(processedCode);
+				
+			/* todo: syntax highlighting? */
 			
 			return processedCode;
-			/* todo: if new line ("\n"), then add proper indentation */
-			/* todo: syntax highlighting? */
-			/* todo: and all of the above should happen in CodeSnippet.setText, right? */
 		}
 		
 		return _snippet.getText();

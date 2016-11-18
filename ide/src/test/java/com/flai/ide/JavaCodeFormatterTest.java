@@ -49,4 +49,101 @@ public class JavaCodeFormatterTest {
 				"public class Main {\n\t String var = \"{{{{{{\";\n\tpublic static void main(){\n", 73), 
 				"public class Main {\n\t String var = \"{{{{{{\";\n\tpublic static void main(){\n\t\t");
 	}
+	
+	@Test
+	public void testIndenting5() {
+		assertEquals(_formatter.processNewCode(
+				"{", 
+				"{\n", 2), 
+				"{\n\t");
+	}
+	
+	@Test
+	public void testIndenting6() {
+		assertEquals(_formatter.processNewCode(
+				"char c = 'c';", 
+				"char c = 'c';\n", 14), 
+				"char c = 'c';\n");
+	}
+	
+	@Test
+	public void testIndenting7() {
+		assertEquals(_formatter.processNewCode(
+				"/*", 
+				"/*\n", 0), 
+				"/*\n");
+	}
+	
+	@Test
+	public void testIndenting8() {
+		assertEquals(_formatter.processNewCode(
+				"//{", 
+				"//{\n", 3), 
+				"//{\n");
+	}
+	
+	@Test
+	public void testIndenting9() {
+		assertEquals(_formatter.processNewCode(
+				"{//{\n}", 
+				"{//{\n}\n", 7), 
+				"{//{\n}\n");
+	}
+	
+	@Test
+	public void testIndenting10() {
+		assertEquals(_formatter.processNewCode(
+				"/", 
+				"/\n", 1), 
+				"/\n");
+	}
+	
+	
+	@Test
+	public void testIndenting11() {
+		assertEquals(_formatter.processNewCode(
+				"/**/", 
+				"/*\n*/", 0), 
+				"/*\n*/");
+	}
+	
+	@Test
+	public void testIndenting12() {
+		assertEquals(_formatter.processNewCode(
+				"\"",
+				"\"\n", 1),
+				"\"\n");
+	}
+	
+	@Test
+	public void testIndenting13() {
+		assertEquals(_formatter.processNewCode(
+				"\'",
+				"\'", 1),
+				"\'");
+	}
+	
+	@Test
+	public void testIndenting14() {
+		assertEquals(_formatter.processNewCode(
+				"\"\n\"",
+				"\"\n\"\n", 3),
+				"\"\n\"\n");
+	}
+	
+	@Test
+	public void testIndenting15() {
+		assertEquals(_formatter.processNewCode(
+				"\"\\\\\"",
+				"\"\\\\\"\n", 3),
+				"\"\\\\\"\n");
+	}
+	
+	@Test
+	public void testIndenting16() {
+		assertEquals(_formatter.processNewCode(
+				"\'\\'\'",
+				"\'\\'\'\n", 4),
+				"\'\\'\'\n");
+	}
 }

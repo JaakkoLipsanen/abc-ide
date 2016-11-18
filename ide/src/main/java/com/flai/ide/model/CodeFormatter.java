@@ -11,7 +11,7 @@ package com.flai.ide.model;
  */
 public interface CodeFormatter {
 	public String processNewCode(String oldCode, String newCode, int caretPosition);	
-// public SyntaxHighlight calculateSyntaxHighlighting(String code);
+ // public SyntaxHighlight calculateSyntaxHighlighting(String code);
 	
 	public static CodeFormatter create(ProgrammingLanguage language) {
 		switch(language) {

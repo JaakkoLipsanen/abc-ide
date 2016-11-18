@@ -1,9 +1,6 @@
 package com.flai.ide;
 
 import com.flai.ide.StringHelper.TextInsert;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,9 +15,10 @@ public class StringHelperTest {
 	
 	@Test
 	public void textInsertConstructorWorks() {
-		TextInsert insert = new TextInsert(-1, "123");
-		assertTrue(insert.StartIndex == -1);
+		TextInsert insert = new TextInsert(0, "123");
+		assertTrue(insert.StartIndex == 0);
 		assertTrue(insert.InsertedText == "123");
+		assertTrue(insert.EndIndex == 0 + "123".length());
 	}
 	
 	@Test

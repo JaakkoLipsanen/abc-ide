@@ -9,7 +9,6 @@ public class CodeSnippet {
 	private ProgrammingLanguage _programmingLanguage;
 	// todo: last modified date
 	// todo: filepath?
-	// todo: programming language?
     
     public CodeSnippet(String code, ProgrammingLanguage language) {
         _code = code;

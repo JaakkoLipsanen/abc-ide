@@ -38,4 +38,9 @@ public class CodeSnippetViewModelTest {
 	 public void setCodeWorks2() {
 		 assertEquals(_vm.setAndProcessNewCode("test2", 0), "test2");
 	 }
+	 
+	  @Test
+	 public void setCodeWorks3() {
+		 assertEquals(_vm.setAndProcessNewCode("test", 0), "test");
+	 }
 }

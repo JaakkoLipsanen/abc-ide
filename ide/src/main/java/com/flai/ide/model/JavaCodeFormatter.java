@@ -16,15 +16,17 @@ class JavaCodeFormatter implements CodeFormatter {
 
 	@Override
 	public String processNewCode(String oldCode, String newCode, int caretPosition) {
-		/* If the new code is only newline ("\n"),
+		/* If the diff between oldCode and newCode is a newline ("\n"),
 		   then add a proper indentatation
 		*/
 		
 		TextInsert insert = StringHelper.isStringDifferenceAnInsertion(oldCode, newCode);
 		if(insert != null && insert.InsertedText.equals("\n")) { // TODO: it could be "\n\r" or "   \n" or something maybe also?
 			
-			int indentationLevel = calculateIndentationAtIndex(newCode, insert.EndIndex - 1); // EndIndex-1?
-			return StringHelper.insert(newCode, caretPosition, StringHelper.repeat('\t', indentationLevel));
+			int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex - 1);
+			return StringHelper.insert(newCode, 
+					caretPosition, 
+					StringHelper.repeat('\t', indentationLevel));
 		}
 		
 		return newCode;
@@ -66,7 +68,6 @@ class JavaCodeFormatter implements CodeFormatter {
 		return indentationCount;
 	}
 	
-	/*    *****/
 	private boolean isStringStartingAt(String originalCode, int index, String stringToSearch) {
 		if(originalCode.length() < index + stringToSearch.length()) {
 			return false;
@@ -78,7 +79,7 @@ class JavaCodeFormatter implements CodeFormatter {
 	private int skipMultilineComment(String code, int startIndex) {
 		assert isStringStartingAt(code, startIndex, "/*");
 		
-		for(int i = startIndex + 2; i < code.length(); i++) {
+		for(int i = startIndex + "/*".length(); i < code.length(); i++) {
 			if(this.isStringStartingAt(code, i, "*/")) {
 				return i + "*/".length();
 			}
@@ -90,7 +91,7 @@ class JavaCodeFormatter implements CodeFormatter {
 	private int skipSingleLineComment(String code, int startIndex) {
 		assert isStringStartingAt(code, startIndex, "//");
 		
-		for(int i = startIndex + 2; i < code.length(); i++) {
+		for(int i = startIndex + "//".length(); i < code.length(); i++) {
 			if(code.charAt(i) == '\n') {
 				return i + 1;
 			}
@@ -117,15 +118,14 @@ class JavaCodeFormatter implements CodeFormatter {
 		assert code.charAt(startIndex) == '"';
 		
 		boolean wasPreviousCharEscaped = false;
-		int i = startIndex + 1;
+		int i = startIndex + 1; // +1 because " is one char
 		for(; i < code.length(); i++) {
 			char c = code.charAt(i);
 			
-			if(c == '"') {
+			if(c == '"' && !wasPreviousCharEscaped) {
 				return i + 1;
 			}
 			
-			wasPreviousCharEscaped = false;
 			if(c == '\\') {
 				if(wasPreviousCharEscaped) { // if prev char was escaped, then this char isn't "escape" but rather escaped \
 					wasPreviousCharEscaped = false;
@@ -133,6 +133,9 @@ class JavaCodeFormatter implements CodeFormatter {
 				else {
 					wasPreviousCharEscaped = true;
 				}
+			}
+			else {
+				wasPreviousCharEscaped = false;
 			}
 		}
 		

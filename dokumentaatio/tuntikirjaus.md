@@ -6,3 +6,4 @@
 |11.11.2016 |8.0h  |Hui kun meni kauan.. Alotin koodailun, tota base arkkitehtuuria/JavaFX:n kanssa säätöä pääosin|
 |13.11.2016 |2.0h  |Indentaatio kun painaa entteriä|
 |18.11.2016 |1.5h  |Koodin siistimistä, testejä|
+|23-24.11.2016 |4h  |Koodin parseamista, syntax highlighting, testejä jne|

@@ -59,7 +59,7 @@ public class CodeEditorControl implements Control {
 			return;
 		}
 
-		String processedCode = _editor.getCurrentCodeSnippet().setAndProcessNewCode(newValue, _codeTextControl.getCaretPosition());
+		String processedCode = _editor.getCurrentCodeSnippet().setAndFormatNewCode(newValue, _codeTextControl.getCaretPosition());
 		if (!processedCode.equals(newValue)) {
 			_isUpdatingProcessedCode = true;
 
@@ -80,7 +80,7 @@ public class CodeEditorControl implements Control {
 	
 	private void updateSyntaxHighlighting() {
 		String text = _codeTextControl.getText();
-		CodeBlockContainer codeBlocks = _editor.getCurrentCodeSnippet().createSyntaxHighlighting(text);
+		CodeBlockContainer codeBlocks = _editor.getCurrentCodeSnippet().parseCode(text);
 		
 		_codeTextControl.clearStyle(0, text.length());
 		for(CodeBlock block : codeBlocks) {

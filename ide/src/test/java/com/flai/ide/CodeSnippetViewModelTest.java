@@ -30,17 +30,17 @@ public class CodeSnippetViewModelTest {
 	 
 	 @Test
 	 public void setCodeWorks() {
-		 _vm.setAndProcessNewCode("test2", 0);
+		 _vm.setAndFormatNewCode("test2", 0);
 		 assertEquals(_vm.getCode(), "test2");
 	 }
 	 
 	 @Test
 	 public void setCodeWorks2() {
-		 assertEquals(_vm.setAndProcessNewCode("test2", 0), "test2");
+		 assertEquals(_vm.setAndFormatNewCode("test2", 0), "test2");
 	 }
 	 
 	  @Test
 	 public void setCodeWorks3() {
-		 assertEquals(_vm.setAndProcessNewCode("test", 0), "test");
+		 assertEquals(_vm.setAndFormatNewCode("test", 0), "test");
 	 }
 }

@@ -13,12 +13,12 @@ public class CodeSnippetViewModel {
 
 	private final CodeSnippet _snippet;
 	private final CodeFormatter _codeFormatter;
-	private final CodeParser _codeSyntaxProcessor;
+	private final CodeParser _codeParser;
 
 	public CodeSnippetViewModel(CodeSnippet snippet) {
 		_snippet = snippet;
 		_codeFormatter = CodeFormatter.create(_snippet.getLanguage());
-		_codeSyntaxProcessor = CodeParser.create(_snippet.getLanguage());
+		_codeParser = CodeParser.create(_snippet.getLanguage());
 	}
 
 	public String getCode() {
@@ -26,7 +26,7 @@ public class CodeSnippetViewModel {
 	}
 
 	/**
-	 * This function sets the new code AND processes it if needed. For example,
+	 * This function sets the new code AND formats/processes it if needed. For example,
 	 * when "\n" (aka newline) is inputted, the proper indentation/tabs will be
 	 * added here
 	 *
@@ -40,21 +40,18 @@ public class CodeSnippetViewModel {
 	 * @return the processed (aka possibly modified) version of the newValue
 	 * parameter
 	 */
-	public String setAndProcessNewCode(String newCode, int caretPosition) { // HMMM!! Should I make "insertCode" function? It'd maybe be clearer!!
+	public String setAndFormatNewCode(String newCode, int caretPosition) { // HMMM!! Should I make "insertCode" function? It'd maybe be clearer!!
 		if (!newCode.equals(_snippet.getText())) {
 			String processedCode = _codeFormatter.processNewCode(_snippet.getText(), newCode, caretPosition);
 			_snippet.setText(processedCode);
 
-			/* todo: syntax highlighting? */
 			return processedCode;
 		}
 
 		return _snippet.getText();
 	}
 	
-	public CodeBlockContainer createSyntaxHighlighting(String code) {
-		return _codeSyntaxProcessor.parseCode(code);
+	public CodeBlockContainer parseCode(String code) {
+		return _codeParser.parseCode(code);
 	}
-
-	/* TODO: create insertAndProcessNewCode(..) ?? */
 }

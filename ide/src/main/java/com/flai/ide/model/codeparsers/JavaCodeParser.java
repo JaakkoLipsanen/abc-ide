@@ -40,7 +40,7 @@ class JavaCodeParser implements CodeParser {
 			final char c = code.charAt(index);
 			final int currentIndex = index;
 			
-			Supplier<Integer> createBlockFunction = null; // variable holding a function that returns int and takes no parameters ("int function() { .. }")
+			Supplier<Integer> createBlockFunction = null; // variable holding a function that returns Integer and takes no parameters ("Integer function() { .. }")
 			if (c == '\'') { // if c is ', then it is the start of char literal
 				createBlockFunction = () -> createCharLiteral(codeBlocks, code, currentIndex);
 			} 

@@ -6,9 +6,13 @@
 package com.flai.ide.view;
 
 import com.flai.ide.StringHelper;
+import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor;
+import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlock;
+import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlockContainer;
 import com.flai.ide.viewmodels.EditorViewModel;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
+import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.StyleClassedTextArea;
 
 /**
@@ -35,12 +39,14 @@ public class CodeEditorControl implements Control {
 	@Override
 	public Node createNode() {
 		_codeTextControl = new StyleClassedTextArea();
-
+		_codeTextControl.getStyleClass().add("code-area");
+		
 		// set the initial text to CodeSnippet.text (that is loaded from file/the default text that is generated)
 		String initialText = _editor.getCurrentCodeSnippet().getCode();
 		_codeTextControl.replaceText(initialText);
+		updateSyntaxHighlighting();
+		
 		_codeTextControl.textProperty().addListener(this::onControlTextChanged);
-
 		return _codeTextControl;
 	}
 
@@ -69,6 +75,18 @@ public class CodeEditorControl implements Control {
 			}
 
 			_isUpdatingProcessedCode = false;
+		}
+		
+		updateSyntaxHighlighting();
+	}
+	
+	private void updateSyntaxHighlighting() {
+		String text = _codeTextControl.getText();
+		CodeBlockContainer codeBlocks = _editor.getCurrentCodeSnippet().createSyntaxHighlighting(text);
+		
+		_codeTextControl.clearStyle(0, text.length());
+		for(CodeBlock block : codeBlocks) {
+			_codeTextControl.setStyleClass(block.StartIndex, block.EndIndex, block.Type.name());
 		}
 	}
 }

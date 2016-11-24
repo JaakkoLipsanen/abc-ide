@@ -2,6 +2,8 @@ package com.flai.ide.viewmodels;
 
 import com.flai.ide.model.CodeFormatter;
 import com.flai.ide.model.CodeSnippet;
+import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor;
+import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlockContainer;
 
 /**
  *
@@ -11,10 +13,12 @@ public class CodeSnippetViewModel {
 
 	private final CodeSnippet _snippet;
 	private final CodeFormatter _codeFormatter;
+	private final CodeSyntaxProcessor _codeSyntaxProcessor;
 
 	public CodeSnippetViewModel(CodeSnippet snippet) {
 		_snippet = snippet;
 		_codeFormatter = CodeFormatter.create(_snippet.getLanguage());
+		_codeSyntaxProcessor = CodeSyntaxProcessor.create(_snippet.getLanguage());
 	}
 
 	public String getCode() {
@@ -46,6 +50,10 @@ public class CodeSnippetViewModel {
 		}
 
 		return _snippet.getText();
+	}
+	
+	public CodeBlockContainer createSyntaxHighlighting(String code) {
+		return _codeSyntaxProcessor.processCode(code);
 	}
 
 	/* TODO: create insertAndProcessNewCode(..) ?? */

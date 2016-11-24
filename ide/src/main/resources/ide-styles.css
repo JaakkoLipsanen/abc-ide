@@ -1,0 +1,60 @@
+* {
+	normal-text-color: rgb(196, 196, 196);
+	string-literal-color: rgb(192, 96, 96);
+	char-literal-color: rgb(192, 96, 96);
+	
+	keyword-color: rgb(255, 153, 0);
+}
+
+.StringLiteral {
+	-fx-fill: string-literal-color;
+    -fx-font-weight: bold;
+	-fx-font: 14px "Consolas";
+}
+
+.CharLiteral {
+	-fx-fill: char-literal-color;
+    -fx-font-weight: bold;
+	-fx-font: 14px "Consolas";
+}
+
+.Keyword {
+	-fx-fill: rgb(255, 153, 0);
+    -fx-font-weight: bold;
+	-fx-font: 14px "Consolas";
+
+}
+
+.SingleLineComment {
+	-fx-fill: rgb(106, 135, 89);
+    -fx-font-weight: bold;
+	-fx-font: 14px "Consolas";
+}
+
+.MultiLineComment {
+	-fx-fill: rgb(106, 135, 89);
+    -fx-font-weight: bold;
+	-fx-font: 14px "Consolas";
+}
+
+.Other, .OpeningBrace, .ClosingBrace {
+	-fx-fill: normal-text-color;
+	-fx-font: 14px "Consolas";
+}
+
+.styled-text-area .caret {
+    -fx-stroke: normal-text-color;
+}
+
+.code-area {
+    -fx-background-color: rgb(48, 48, 48);
+}
+
+.tool-bar {
+    -fx-background-color: rgb(72, 72, 72);
+}
+
+.button {
+    -fx-background-color: rgb(48, 48, 48);
+	-fx-text-fill: white;
+}

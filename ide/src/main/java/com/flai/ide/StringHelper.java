@@ -49,9 +49,11 @@ public class StringHelper {
 				if (firstDifferentIndex == -1) {
 					firstDifferentIndex = i;
 					lastDifferentIndex = i;
-				} else if (lastDifferentIndex == i - 1) {
+				} 
+				else if (lastDifferentIndex == i - 1) {
 					lastDifferentIndex = i;
-				} else { // there is a gap somewhere -> not an insert but multiple inserts
+				} 
+				else { // there is a gap somewhere -> not an insert but multiple inserts
 					return null;
 				}
 

@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 12,
+      <title>File: 14,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -61,20 +61,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.flai.ide.view.Control.java">com/flai/ide/view/Control.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.flai.ide.pages.Page.java">com/flai/ide/pages/Page.java</a>
                 </td>
                 <td>
                   0
@@ -130,34 +116,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.CodeSnippet.java">com/flai/ide/model/CodeSnippet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.CodeFormatter.java">com/flai/ide/model/CodeFormatter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.flai.ide.model.JavaCodeFormatter.java">com/flai/ide/model/JavaCodeFormatter.java</a>
                 </td>
                 <td>
@@ -200,7 +158,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.syntaxhighlight.JavaSyntaxProcessor.java">com/flai/ide/model/syntaxhighlight/JavaSyntaxProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.flai.ide.viewmodels.EditorViewModel.java">com/flai/ide/viewmodels/EditorViewModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.flai.ide.pages.Page.java">com/flai/ide/pages/Page.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.java">com/flai/ide/model/syntaxhighlight/CodeSyntaxProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.CodeSnippet.java">com/flai/ide/model/CodeSnippet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.flai.ide.model.CodeFormatter.java">com/flai/ide/model/CodeFormatter.java</a>
                 </td>
                 <td>
                   0

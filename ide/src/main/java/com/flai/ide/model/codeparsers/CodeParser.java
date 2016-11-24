@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.flai.ide.model.syntaxhighlight;
+package com.flai.ide.model.codeparsers;
 
 import com.flai.ide.model.ProgrammingLanguage;
 import java.util.Arrays;
@@ -11,16 +11,17 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- *
+ * An common interface for all code parsers.
+ * parseCode method parses the code and returns a collection of CodeBlock's
  * @author Jaakko
  */
-public interface CodeSyntaxProcessor {
-	CodeBlockContainer processCode(String code);
+public interface CodeParser {
+	CodeBlockContainer parseCode(String code);
 	
-	public static CodeSyntaxProcessor create(ProgrammingLanguage language) {
+	public static CodeParser create(ProgrammingLanguage language) {
 		switch (language) {
 			case JAVA:
-				return new JavaSyntaxProcessor();
+				return new JavaCodeParser();
 		}
 
 		throw new IllegalArgumentException("");
@@ -70,8 +71,7 @@ public interface CodeSyntaxProcessor {
 			return Arrays.stream(_codeBlocks).iterator();
 		}
 	}
-	
-	
+		
 	public class CodeBlock {
 		public final int StartIndex;
 		public final int EndIndex;

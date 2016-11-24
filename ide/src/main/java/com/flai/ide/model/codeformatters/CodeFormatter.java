@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.flai.ide.model;
+package com.flai.ide.model.codeformatters;
+
+import com.flai.ide.model.ProgrammingLanguage;
 
 /**
- *
+ * An interface that all code formatters implements.
+ * 
  * @author Jaakko
  */
 public interface CodeFormatter {
 
 	public String processNewCode(String oldCode, String newCode, int caretPosition);
- // public SyntaxHighlight calculateSyntaxHighlighting(String code);
-
 	public static CodeFormatter create(ProgrammingLanguage language) {
 		switch (language) {
 			case JAVA:

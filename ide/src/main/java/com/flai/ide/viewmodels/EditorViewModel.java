@@ -9,7 +9,7 @@ import com.flai.ide.model.CodeSnippet;
 import com.flai.ide.model.ProgrammingLanguage;
 
 /**
- *
+ * The main/root ViewModel, holds all data about the entire app
  * @author Jaakko
  */
 public class EditorViewModel {
@@ -43,10 +43,12 @@ public class EditorViewModel {
 	 */
 	private static CodeSnippet createDefaultCodeSnippet() {
 		return new CodeSnippet(
-				"public static class Snippet {" + "\n"
-				+ "	public static void main(String[] args) {" + "\n"
-				+ "		System.out.println(\"Hello World!\");" + "\n"
-				+ "	}" + "\n"
-				+ "}", ProgrammingLanguage.JAVA);
+			"import java.lang.*;" + "\n" + "\n" +
+			"public static class Snippet {" + "\n"
+			+ "	public static void main(String[] args) {" + "\n"
+			+ "		/* Hello world! */ \n"
+			+ "		System.out.println(\"Hello World!\");" + "\n"
+			+ "	}" + "\n"
+			+ "}", ProgrammingLanguage.JAVA);
 	}
 }

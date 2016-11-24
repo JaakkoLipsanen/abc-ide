@@ -5,7 +5,7 @@
  */
 package com.flai.ide;
 
-import com.flai.ide.model.CodeFormatter;
+import com.flai.ide.model.codeformatters.CodeFormatter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

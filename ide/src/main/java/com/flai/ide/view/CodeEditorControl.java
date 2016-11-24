@@ -6,13 +6,11 @@
 package com.flai.ide.view;
 
 import com.flai.ide.StringHelper;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlock;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlockContainer;
+import com.flai.ide.model.codeparsers.CodeParser.CodeBlock;
+import com.flai.ide.model.codeparsers.CodeParser.CodeBlockContainer;
 import com.flai.ide.viewmodels.EditorViewModel;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.StyleClassedTextArea;
 
 /**
@@ -69,8 +67,8 @@ public class CodeEditorControl implements Control {
 			if (insert != null) { // if insert is null, then the modification was not a simple insert, so we cant use the insertText call
 				// insertText call keeps the caret/cursor position, where as replaceText does not
 				_codeTextControl.insertText(insert.StartIndex, insert.InsertedText);
-
-			} else {
+			} 
+			else {
 				_codeTextControl.replaceText(newValue);
 			}
 

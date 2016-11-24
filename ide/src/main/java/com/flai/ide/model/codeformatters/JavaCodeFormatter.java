@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.flai.ide.model;
+package com.flai.ide.model.codeformatters;
 
 import com.flai.ide.StringHelper;
 import com.flai.ide.StringHelper.TextInsert;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlock;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlockContainer;
-import com.flai.ide.model.syntaxhighlight.CodeSyntaxProcessor.CodeBlockType;
+import com.flai.ide.model.ProgrammingLanguage;
+import com.flai.ide.model.codeparsers.CodeParser;
+import com.flai.ide.model.codeparsers.CodeParser.CodeBlock;
+import com.flai.ide.model.codeparsers.CodeParser.CodeBlockContainer;
+import com.flai.ide.model.codeparsers.CodeParser.CodeBlockType;
 
 /**
- *
+ * A code formatters that can format Java code. Adds indentation when enter is pressed etc
  * @author Jaakko
  */
 class JavaCodeFormatter implements CodeFormatter {
 
-	private final CodeSyntaxProcessor _syntaxProcessor = CodeSyntaxProcessor.create(ProgrammingLanguage.JAVA);
+	private final CodeParser _syntaxProcessor = CodeParser.create(ProgrammingLanguage.JAVA);
 	// TODO: when closing brace is inputted, format that also properly
 	
 	@Override
@@ -43,7 +44,7 @@ class JavaCodeFormatter implements CodeFormatter {
 		assert index < code.length();
 
 		// find amount of "OpeningBrace" code blocks substracted by "ClosingBrace" code blocks at 'index'
-		CodeBlockContainer codeBlocks = _syntaxProcessor.processCode(code);
+		CodeBlockContainer codeBlocks = _syntaxProcessor.parseCode(code);
 		
 		int indentationLevel = 0;
 		for (CodeBlock block : codeBlocks) {

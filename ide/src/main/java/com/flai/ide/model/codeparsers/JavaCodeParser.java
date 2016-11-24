@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.flai.ide.model.syntaxhighlight;
+package com.flai.ide.model.codeparsers;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Supplier;
 
 /**
- *
+ * Class that can parse Java code
  * @author Jaakko
  */
-class JavaSyntaxProcessor implements CodeSyntaxProcessor {
+class JavaCodeParser implements CodeParser {
 
-	private static final String KeyWords[] = {
+	private static final String KEYWORDS[] = {
 		"public", "private", "protected",
 		"class", "interface", "enum",
 		"abstract", "final", "static",
@@ -32,7 +32,7 @@ class JavaSyntaxProcessor implements CodeSyntaxProcessor {
 	};
 	
 	@Override
-	public CodeBlockContainer processCode(String code) {
+	public CodeBlockContainer parseCode(String code) {
 		ArrayList<CodeBlock> codeBlocks = new ArrayList<CodeBlock>();
 
 		int currentBlockStartIndex = 0;
@@ -43,13 +43,14 @@ class JavaSyntaxProcessor implements CodeSyntaxProcessor {
 			Supplier<Integer> createBlockFunction = null; // variable holding a function that returns int and takes no parameters ("int function() { .. }")
 			if (c == '\'') { // if c is ', then it is the start of char literal
 				createBlockFunction = () -> createCharLiteral(codeBlocks, code, currentIndex);
-			} else if (c == '"') { // if c is ", then it is the start of string literal
+			} 
+			else if (c == '"') { // if c is ", then it is the start of string literal
 				createBlockFunction = () -> createStringLiteral(codeBlocks, code, currentIndex);
 			}
-			else if(isStringStartingAt(code, currentIndex, "//")) { // single line comment
+			else if(isStringStartingAt(code, currentIndex, "//")) { // start of single line comment
 				createBlockFunction = () -> createSingleLineComment(codeBlocks, code, currentIndex);
 			}
-			else if(isStringStartingAt(code, currentIndex, "/*")) { // multi line comment
+			else if(isStringStartingAt(code, currentIndex, "/*")) { // start of multi line comment
 				createBlockFunction = () -> createMultiLineComment(codeBlocks, code, currentIndex);
 			}
 			else if(c == '{') { // opening brace
@@ -111,10 +112,12 @@ class JavaSyntaxProcessor implements CodeSyntaxProcessor {
 			if (c == '\\') {
 				if (wasPreviousCharEscaped) { // if prev char was escaped, then this char isn't "escape" but rather escaped \ character
 					wasPreviousCharEscaped = false;
-				} else {
+				} 
+				else {
 					wasPreviousCharEscaped = true;
 				}
-			} else {
+			} 
+			else {
 				wasPreviousCharEscaped = false;
 			}
 		}
@@ -151,9 +154,8 @@ class JavaSyntaxProcessor implements CodeSyntaxProcessor {
 	}
 	
 	private boolean isKeywordStartingAt(ArrayList<CodeBlock> codeBlocks, int startIndex, String code) {
-		for(String keyword : JavaSyntaxProcessor.KeyWords) {
+		for(String keyword : JavaCodeParser.KEYWORDS) {
 			if(isStringStartingAt(code, startIndex, keyword)) {
-				codeBlocks.add(new CodeBlock(startIndex, startIndex + keyword.length(), CodeBlockType.Keyword));
 				return true;
 			}
 		}
@@ -162,7 +164,7 @@ class JavaSyntaxProcessor implements CodeSyntaxProcessor {
 	}
 	
 	private int createKeyword(ArrayList<CodeBlock> codeBlocks, String code, int startIndex) {
-		for(String keyword : JavaSyntaxProcessor.KeyWords) {
+		for(String keyword : JavaCodeParser.KEYWORDS) {
 			if(isStringStartingAt(code, startIndex, keyword)) {
 				codeBlocks.add(new CodeBlock(startIndex, startIndex + keyword.length(), CodeBlockType.Keyword));
 				return startIndex + keyword.length();

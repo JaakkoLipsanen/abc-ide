@@ -1,7 +1,7 @@
 package com.flai.ide.model;
 
 /**
- *
+ * A class that holds information about a code snippet/file
  * @author Jaakko
  */
 public class CodeSnippet {

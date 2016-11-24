@@ -6,7 +6,7 @@
 package com.flai.ide;
 
 import static org.junit.Assert.*;
-import com.flai.ide.model.CodeFormatter;
+import com.flai.ide.model.codeformatters.CodeFormatter;
 import com.flai.ide.model.ProgrammingLanguage;
 import org.junit.Before;
 import org.junit.Test;

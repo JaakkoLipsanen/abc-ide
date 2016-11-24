@@ -19,7 +19,7 @@ import com.flai.ide.model.codeparsers.CodeParser.CodeBlockType;
  */
 class JavaCodeFormatter implements CodeFormatter {
 
-	private final CodeParser _syntaxProcessor = CodeParser.create(ProgrammingLanguage.JAVA);
+	private final CodeParser _codeParser = CodeParser.create(ProgrammingLanguage.JAVA);
 	// TODO: when closing brace is inputted, format that also properly
 	
 	@Override
@@ -44,7 +44,7 @@ class JavaCodeFormatter implements CodeFormatter {
 		assert index < code.length();
 
 		// find amount of "OpeningBrace" code blocks substracted by "ClosingBrace" code blocks at 'index'
-		CodeBlockContainer codeBlocks = _syntaxProcessor.parseCode(code);
+		CodeBlockContainer codeBlocks = _codeParser.parseCode(code);
 		
 		int indentationLevel = 0;
 		for (CodeBlock block : codeBlocks) {

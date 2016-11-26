@@ -22,6 +22,12 @@ public class StringHelper {
 
 		return start + stringToInsert + end;
 	}
+	
+	public static String removeSubstring(String original, int startIndex, int count) {
+		assert original.length() <= startIndex + count;
+		
+		return original.substring(0, startIndex) + original.substring(startIndex + count);
+	}
 
 	/**
 	 * If the difference between the two strings is a simple insertion (aka if

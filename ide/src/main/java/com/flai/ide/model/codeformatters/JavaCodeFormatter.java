@@ -28,12 +28,19 @@ class JavaCodeFormatter implements CodeFormatter {
 		 then add a proper indentatation  */
 
 		TextInsert insert = StringHelper.isStringDifferenceAnInsertion(oldCode, newCode);
-		if (insert != null && insert.InsertedText.equals("\n")) { // TODO: it could be "\n\r" or "   \n" or something maybe also?
-
-			int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex - 1);
-			return StringHelper.insert(newCode,
+		if(insert != null) {
+			if(insert.InsertedText.equals("\n")) {
+				int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex - 1);
+				return StringHelper.insert(newCode,
 					caretPosition,
 					StringHelper.repeat('\t', indentationLevel));
+			}
+			else if(insert.InsertedText.equals("}")) {
+				int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex);
+				newCode = setLineIndentation(newCode, insert.StartIndex, indentationLevel);
+
+				return newCode;
+			}
 		}
 
 		return newCode;
@@ -61,5 +68,31 @@ class JavaCodeFormatter implements CodeFormatter {
 		}
 		
 		return indentationLevel >= 0 ? indentationLevel : 0;
+	}
+
+	private String setLineIndentation(String code, int index, int indentationLevel) {
+		// find which line 'index' is on
+		int lineStartIndex = 0;
+		int lineFirstNonWhitespaceIndex = 0;
+		boolean hasFoundNonWhitespace = false;
+		for(int i = 0; i <= index; i++) {
+
+			char c = code.charAt(i);
+			if(c == '\n') {
+				lineStartIndex = i + 1;
+				lineFirstNonWhitespaceIndex = i + 1;
+				hasFoundNonWhitespace = false;
+			}
+			else if(!hasFoundNonWhitespace && Character.isWhitespace(c)) {
+				lineFirstNonWhitespaceIndex = i + 1;
+			}
+			else {
+				hasFoundNonWhitespace = true;
+			}
+		}
+		
+		code = StringHelper.removeSubstring(code, lineStartIndex, lineFirstNonWhitespaceIndex - lineStartIndex);
+		code = StringHelper.insert(code, lineStartIndex, StringHelper.repeat('\t', indentationLevel));
+		return code;
 	}
 }

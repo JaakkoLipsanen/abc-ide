@@ -96,6 +96,9 @@ public class EditorPage implements Page {
 		if(compileResult.CompileStatus == CompileStatus.OK) {
 			_console.attachIOStreamsToProgram(compileResult.ProgramInfo);
 
+			compileResult.ProgramInfo.setProgramFinishedListener(exitCode -> {
+				_console.detachIOStreams();
+			});
 			compileResult.ProgramInfo.run();
 		}
 		else {

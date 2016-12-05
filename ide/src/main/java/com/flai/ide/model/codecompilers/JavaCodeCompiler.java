@@ -46,7 +46,7 @@ public class JavaCodeCompiler implements CodeCompiler {
 			return new CompileResult(CompileStatus.OK, new ProgramInfo(new ProgramRunner() {
 
 				@Override
-				public boolean run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output) {
+				public int run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output) {
 					try {
 						ProcessBuilder processBuilder = new ProcessBuilder("java", FILE_NAME);
 						processBuilder.directory(codeFile.getParentFile());
@@ -57,10 +57,11 @@ public class JavaCodeCompiler implements CodeCompiler {
 						error.setStream(process.getErrorStream());
 						output.setStream(process.getOutputStream());
 						
-						return true;
+						process.waitFor();
+						return process.exitValue();
 						
 					} 
-					catch (Exception ex) { return false; }
+					catch (Exception ex) { return -1; }
 				}
 			}));
 		}

@@ -7,6 +7,8 @@ package com.flai.ide.model.codecompilers;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.function.Consumer;
+import javafx.application.Platform;
 
 /**
  *
@@ -20,6 +22,9 @@ public final class ProgramInfo {
 	private InputStreamListener _inputListener;
 	private InputStreamListener _errorListener;
 	private OutputStreamBroadcaster _outputBroadcaster;
+	
+	// returns exit code
+	private Consumer<Integer> _onFinishedListener;
 
 	public ProgramInfo(ProgramRunner runner) {
 		_runner = runner;
@@ -36,15 +41,24 @@ public final class ProgramInfo {
 	public void setInputBroadcaster(OutputStreamBroadcaster broadcaster) {
 		_outputBroadcaster = broadcaster;
 	}
+	
+	public void setProgramFinishedListener(Consumer<Integer> finishedListener) {
+		_onFinishedListener = finishedListener;
+	}
 
 	public void run() {
 		new Thread() { // run the app in different thread so that the app doesn't freeze/get blocked
 
 			@Override
 			public void run() {
-				_runner.run(_inputListener, _errorListener, _outputBroadcaster);
+				int exitCode = _runner.run(_inputListener, _errorListener, _outputBroadcaster);
+				if(_onFinishedListener != null) {
+					Platform.runLater(() -> {
+						_onFinishedListener.accept(exitCode);
+					});
+				}
 			}
-		}.run();
+		}.start();
 	}
 	
 	public interface InputStreamListener {
@@ -56,7 +70,8 @@ public final class ProgramInfo {
 	}
 
 	public interface ProgramRunner {
-		boolean run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output);
+		// returns exit code
+		int run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output);
 	}
 
 }

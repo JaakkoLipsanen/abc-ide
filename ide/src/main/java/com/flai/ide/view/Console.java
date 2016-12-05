@@ -79,35 +79,25 @@ public class Console implements Control {
 		programInfo.setErrorListener(_programError);
 		programInfo.setInputBroadcaster(_programInput);
 
-		final int TimerFrequency = 100; // in milliseconds, how often the code will be repeate4d
+		final int TimerFrequency = 100; // in milliseconds, how often the code will be repeated
 		_checkInputStreamDataTimer = new Timer();
 		_checkInputStreamDataTimer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-			   Platform.runLater(() -> { // Platform.runLater == execute in the main/UI thread asap
-				   String outputText = _programOutput.getNewText();
-				   if(!outputText.isEmpty()) {
-					   writeToOutput(outputText);
-				   }
-				   
-				   String errorText = _programOutput.getNewText();
-				   if(!errorText.isEmpty()) {
-					   writeToOutput(errorText); // writeToOutputError(..) ?
-				   }
-				});
+				Console.this.getOutputFromStreams();
 			}
 		}, 0, TimerFrequency);
 	}
 	
 	public void detachIOStreams() {
+		getOutputFromStreams();
+		
 		if(_programOutput != null) {
-			_programOutput.close();
-			_programOutput = null;
+			_programOutput.stopListening();
 		}
 		
 		if(_programError != null) {
-			_programError.close();
-			_programError = null;
+			_programError.stopListening();
 		}
 		
 		if(_checkInputStreamDataTimer != null) {
@@ -116,6 +106,24 @@ public class Console implements Control {
 		}
 		
 		_programInput = null;
+	}
+	
+	private void getOutputFromStreams() {
+		 Platform.runLater(() -> { // Platform.runLater == execute in the main/UI thread asap		
+			 if(_programOutput != null) {
+				String outputText = _programOutput.getNewText();
+				if(!outputText.isEmpty()) {
+					writeToOutput(outputText);
+				}
+			}
+
+			if(_programError != null) {
+				String errorText = _programError.getNewText();
+				if(!errorText.isEmpty()) {
+					writeToOutput(errorText); // writeToOutputError(..) ?
+				}
+			}
+		 });
 	}
 	
 	private void clearOutput() {
@@ -179,12 +187,12 @@ public class Console implements Control {
 			}
 		}
 		
-		public void close() {
+		public void stopListening() {
 			_isRunning = false;
 		}
 	}
 	
-	private static class ConsoleOutputStreamBroadcaster  implements OutputStreamBroadcaster {
+	private static class ConsoleOutputStreamBroadcaster implements OutputStreamBroadcaster {
 		private BufferedWriter _outputWriter;
 		
 		@Override

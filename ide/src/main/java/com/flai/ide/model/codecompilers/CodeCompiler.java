@@ -6,8 +6,6 @@
 package com.flai.ide.model.codecompilers;
 
 import com.flai.ide.model.ProgrammingLanguage;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  *

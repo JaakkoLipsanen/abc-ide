@@ -2,8 +2,13 @@ package com.flai.ide.viewmodels;
 
 import com.flai.ide.model.codeformatters.CodeFormatter;
 import com.flai.ide.model.CodeSnippet;
+import com.flai.ide.model.codecompilers.CodeCompiler;
+import com.flai.ide.model.codecompilers.CompileResult;
 import com.flai.ide.model.codeparsers.CodeParser;
 import com.flai.ide.model.codeparsers.CodeParser.CodeBlockContainer;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * ViewModel for a CodeSnippet.
@@ -12,13 +17,17 @@ import com.flai.ide.model.codeparsers.CodeParser.CodeBlockContainer;
 public class CodeSnippetViewModel {
 
 	private final CodeSnippet _snippet;
+	
 	private final CodeFormatter _codeFormatter;
 	private final CodeParser _codeParser;
+	private final CodeCompiler _codeCompiler;
 
 	public CodeSnippetViewModel(CodeSnippet snippet) {
 		_snippet = snippet;
+		
 		_codeFormatter = CodeFormatter.create(_snippet.getLanguage());
 		_codeParser = CodeParser.create(_snippet.getLanguage());
+		_codeCompiler = CodeCompiler.create(_snippet.getLanguage());
 	}
 
 	public String getCode() {
@@ -53,5 +62,19 @@ public class CodeSnippetViewModel {
 	
 	public CodeBlockContainer parseCode(String code) {
 		return _codeParser.parseCode(code);
+	}
+	
+	public CompileResult compileCode() {
+		return _codeCompiler.compileCode(_snippet.getText());
+	}
+	
+	public boolean saveToFile(File file) {
+		try {
+			Files.write(file.toPath(), _snippet.getText().getBytes());
+			return true;
+		} catch (IOException ex) {
+			return false;
+		}
+		
 	}
 }

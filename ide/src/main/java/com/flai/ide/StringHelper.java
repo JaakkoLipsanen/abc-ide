@@ -9,6 +9,10 @@ import java.util.Arrays;
  */
 public class StringHelper {
 
+	public static boolean isEmptyOrWhitespace(String s) { 
+		return (s == null) || s.trim().equals("");
+	}
+	
 	public static String repeat(char c, int n) {
 		char[] chars = new char[n];
 		Arrays.fill(chars, c);
@@ -25,7 +29,6 @@ public class StringHelper {
 	
 	public static String removeSubstring(String original, int startIndex, int count) {
 		assert original.length() <= startIndex + count;
-		
 		return original.substring(0, startIndex) + original.substring(startIndex + count);
 	}
 

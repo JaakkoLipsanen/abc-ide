@@ -1,6 +1,7 @@
 package com.flai.ide.pages;
 
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * A common interface for all the page's of the application
@@ -9,5 +10,5 @@ import javafx.scene.Scene;
  */
 public interface Page {
 
-	Scene createScene();
+	Scene createScene(Stage stage);
 }

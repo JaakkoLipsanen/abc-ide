@@ -45,13 +45,9 @@ public class CodeEditorControl implements Control {
 		_codeTextControl.setUndoManager(UndoManagerFactory.zeroHistoryFactory()); // disable undo/redo, not working without custom implementation
 		_codeTextControl.getStyleClass().add("code-area");
 		
-		// set the initial text to CodeSnippet.text (that is loaded from file/the default text that is generated)
-		String initialText = _editor.getCurrentCodeSnippet().getCode();
-		_codeTextControl.replaceText(initialText);
-		updateSyntaxHighlighting();
+		this.resetFromViewModel();
 		
 		_codeTextControl.textProperty().addListener(this::onControlTextChanged);
-	//	_codeTextControl.getUndoManager().performingActionProperty().addListener((x, y, z) -> updateSyntaxHighlighting());
 		return _codeTextControl;
 	}
 
@@ -97,5 +93,12 @@ public class CodeEditorControl implements Control {
 		for(CodeBlock block : codeBlocks) {
 			_codeTextControl.setStyleClass(block.StartIndex, block.EndIndex, block.Type.name());
 		}
+	}
+
+	public void resetFromViewModel() {
+		// set the initial text to CodeSnippet.text (that is loaded from file/the default text that is generated)
+		String initialText = _editor.getCurrentCodeSnippet().getCode();
+		_codeTextControl.replaceText(initialText);
+		updateSyntaxHighlighting();
 	}
 }

@@ -46,6 +46,23 @@
     -fx-stroke: normal-text-color;
 }
 
+
+.console-output .content {
+    -fx-background-color: rgb(72, 72, 72);
+}
+
+.console-output {
+    -fx-background-color: rgb(114, 114, 114);
+	-fx-text-fill: normal-text-color;
+	-fx-font: 14px "Consolas";
+}
+	
+.console-input {
+    -fx-background-color: rgb(72, 72, 72);
+	-fx-text-fill: normal-text-color;
+	-fx-font: 14px "Consolas";
+}
+
 .code-area {
     -fx-background-color: rgb(48, 48, 48);
 }

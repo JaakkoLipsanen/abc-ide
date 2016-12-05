@@ -18,7 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("abc-ide");
 
-		final Scene scene = _currentPage.createScene();
+		final Scene scene = _currentPage.createScene(primaryStage);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

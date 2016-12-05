@@ -5,8 +5,10 @@
  */
 package com.flai.ide.viewmodels;
 
+import com.flai.ide.MiscHelper;
 import com.flai.ide.model.CodeSnippet;
 import com.flai.ide.model.ProgrammingLanguage;
+import java.io.File;
 
 /**
  * The main/root ViewModel, holds all data about the entire app
@@ -26,14 +28,22 @@ public class EditorViewModel {
 		return _currentSnippet;
 	}
 
-	public void loadSnippet(String filePath) {
-		// todo
+	public boolean loadSnippetFromFile(File file) {
+		String text = MiscHelper.readTextFromFile(file);
+		if(text == null) {
+			return false;
+		}
+		
+		ProgrammingLanguage language = /* I only support JAVA, but I could check the file extension of the file here! */ ProgrammingLanguage.JAVA;
+		_currentSnippet = new CodeSnippetViewModel(new CodeSnippet(text, language));
+		
+		return true;
 	}
 
-	public void saveSnippet(String filePath) {
-		// todo
+	public void loadDefaultSnippet() {
+		_currentSnippet = new CodeSnippetViewModel(createDefaultCodeSnippet());
 	}
-
+	
 	/**
 	 * Creates the default code snippet (in Java: main class and main method)
 	 * todo: add somekind of flag for what language is being asked (java or c#
@@ -43,8 +53,10 @@ public class EditorViewModel {
 	 */
 	private static CodeSnippet createDefaultCodeSnippet() {
 		return new CodeSnippet(
-			"import java.lang.*;" + "\n" + "\n" +
-			"public static class Snippet {" + "\n"
+			"import java.lang.*;" + "\n" +
+			"import java.util.Scanner;" + "\n" + 
+			"\n" +
+			"public class Snippet {" + "\n"
 			+ "	public static void main(String[] args) {" + "\n"
 			+ "		/* Hello world! */ \n"
 			+ "		System.out.println(\"Hello World!\");" + "\n"

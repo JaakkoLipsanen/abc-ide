@@ -21,14 +21,15 @@ class JavaCodeParser implements CodeParser {
 		"abstract", "final", "static",
 		"break", "continue", "return", "assert",
 		"try", "catch", "throw", "throws", "finally",
-		"while", "for", "switch", "case", "do",
+		"while", "for", "switch", "case",
 		"volatile", "synchronized", "transient",
 		"byte", "char", "short", "int", "long", "void",	
-		"float", "double", "default",
+		"float", "double", "do", "default",
 		"this", "super", "new",
 		"native", "package", "import",
 		"instanceof", "implements", "extends",
-		"if", "else", "goto"
+		"if", "else", "goto",
+		"true", "false",
 	};
 	
 	@Override

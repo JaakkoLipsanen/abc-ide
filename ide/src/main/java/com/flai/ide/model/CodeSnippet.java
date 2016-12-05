@@ -8,8 +8,8 @@ public class CodeSnippet {
 
 	private String _code;
 	private ProgrammingLanguage _programmingLanguage;
+	// todo: file path?
 	// todo: last modified date
-	// todo: filepath?
 
 	public CodeSnippet(String code, ProgrammingLanguage language) {
 		_code = code;

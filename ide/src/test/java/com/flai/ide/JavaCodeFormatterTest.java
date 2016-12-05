@@ -70,7 +70,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting7() {
 		assertEquals(_formatter.processNewCode(
 				"/*", 
-				"/*\n", 0), 
+				"/*\n", 3), 
 				"/*\n");
 	}
 	
@@ -78,7 +78,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting8() {
 		assertEquals(_formatter.processNewCode(
 				"//{", 
-				"//{\n", 3), 
+				"//{\n", 4), 
 				"//{\n");
 	}
 	
@@ -94,16 +94,19 @@ public class JavaCodeFormatterTest {
 	public void testIndenting10() {
 		assertEquals(_formatter.processNewCode(
 				"/", 
-				"/\n", 1), 
+				"/\n", 2), 
 				"/\n");
 	}
 	
 	
 	@Test
 	public void testIndenting11() {
+		System.out.println("result: " + _formatter.processNewCode(
+				"/**/", 
+				"/*\n*/", 3));
 		assertEquals(_formatter.processNewCode(
 				"/**/", 
-				"/*\n*/", 0), 
+				"/*\n*/", 3), 
 				"/*\n*/");
 	}
 	
@@ -111,7 +114,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting12() {
 		assertEquals(_formatter.processNewCode(
 				"\"",
-				"\"\n", 1),
+				"\"\n", 2),
 				"\"\n");
 	}
 	
@@ -127,7 +130,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting14() {
 		assertEquals(_formatter.processNewCode(
 				"\"\n\"",
-				"\"\n\"\n", 3),
+				"\"\n\"\n", 4),
 				"\"\n\"\n");
 	}
 	
@@ -135,7 +138,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting15() {
 		assertEquals(_formatter.processNewCode(
 				"\"\\\\\"",
-				"\"\\\\\"\n", 3),
+				"\"\\\\\"\n", 5),
 				"\"\\\\\"\n");
 	}
 	
@@ -143,7 +146,7 @@ public class JavaCodeFormatterTest {
 	public void testIndenting16() {
 		assertEquals(_formatter.processNewCode(
 				"\'\\'\'",
-				"\'\\'\'\n", 4),
+				"\'\\'\'\n", 5),
 				"\'\\'\'\n");
 	}
 }

@@ -30,10 +30,9 @@ class JavaCodeFormatter implements CodeFormatter {
 		TextInsert insert = StringHelper.isStringDifferenceAnInsertion(oldCode, newCode);
 		if(insert != null) {
 			if(insert.InsertedText.equals("\n")) {
-				int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex - 1);
-				return StringHelper.insert(newCode,
-					caretPosition,
-					StringHelper.repeat('\t', indentationLevel));
+				int indentationLevel = calculateIndentationAtIndex(newCode, caretPosition - 1);		
+				newCode = setLineIndentation(newCode, caretPosition, indentationLevel);
+				return newCode; 
 			}
 			else if(insert.InsertedText.equals("}")) {
 				int indentationLevel = calculateIndentationAtIndex(newCode, insert.StartIndex);
@@ -75,7 +74,7 @@ class JavaCodeFormatter implements CodeFormatter {
 		int lineStartIndex = 0;
 		int lineFirstNonWhitespaceIndex = 0;
 		boolean hasFoundNonWhitespace = false;
-		for(int i = 0; i <= index; i++) {
+		for(int i = 0; i < index; i++) {
 
 			char c = code.charAt(i);
 			if(c == '\n') {

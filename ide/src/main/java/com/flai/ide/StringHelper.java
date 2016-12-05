@@ -28,7 +28,7 @@ public class StringHelper {
 	}
 	
 	public static String removeSubstring(String original, int startIndex, int count) {
-		assert original.length() <= startIndex + count;
+		assert original.length() >= startIndex + count;
 		return original.substring(0, startIndex) + original.substring(startIndex + count);
 	}
 

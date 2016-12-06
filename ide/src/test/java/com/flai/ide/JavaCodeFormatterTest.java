@@ -149,4 +149,20 @@ public class JavaCodeFormatterTest {
 				"\'\\'\'\n", 5),
 				"\'\\'\'\n");
 	}
+	
+	@Test
+	public void testClosingBrace() {
+		assertEquals(_formatter.processNewCode(
+				"{\n", "{\n}", 3),
+				"{\n}");
+	}
+	
+	
+	@Test
+	public void testClosingBrace2() {
+		assertEquals(_formatter.processNewCode(
+				"{{\n", "{{\n}", 4),
+				"{{\n\t}");
+	}
+	
 }

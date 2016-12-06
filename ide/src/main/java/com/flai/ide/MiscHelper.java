@@ -42,4 +42,8 @@ public class MiscHelper {
 			return null;
 		}
 	}
+	
+	public static boolean isWindowsOS() {
+		return System.getProperty("os.name").contains("Windows");
+	}
 }

@@ -26,7 +26,7 @@ public final class ProgramInfo {
 	// returns exit code
 	private Consumer<Integer> _onFinishedListener;
 
-	public ProgramInfo(ProgramRunner runner) {
+	ProgramInfo(ProgramRunner runner) {
 		_runner = runner;
 	}
 
@@ -73,5 +73,4 @@ public final class ProgramInfo {
 		// returns exit code
 		int run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output);
 	}
-
 }

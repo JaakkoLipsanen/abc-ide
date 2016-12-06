@@ -26,8 +26,8 @@ public class JavaCodeCompiler implements CodeCompiler {
 	public CompileResult compileCode(String code) {
 		File codeFile = createTempFile(code);
 	
-		File javac = getJavac();
-		File java = getJava();
+		File javac = getJavaExecutable("javac");
+		File java = getJavaExecutable("java");
 		
 		if(!javac.exists() || !java.exists()) {
 			return new CompileResult(CompileStatus.WRONG_JAVA_SETUP, "Couldn't find java.exe or javac.exe");
@@ -70,16 +70,10 @@ public class JavaCodeCompiler implements CodeCompiler {
 		}
 	}
 	
-	private File getJavac() {
-        String path = System.getenv("JAVA_HOME") + "/bin/javac.exe";
-		File file = new File(path);
-		
-		return file;
-	}
-	
-	private File getJava() {
-        String path = System.getenv("JAVA_HOME") + "/bin/java.exe";
-		File file = new File(path);
+	private File getJavaExecutable(String executableName) {
+		String extension = MiscHelper.isWindowsOS() ? ".exe" : ""; // on linux, don't add any extension
+        String path = System.getenv("JAVA_HOME") + "/bin/" + executableName;
+		File file = new File(path + extension);
 		
 		return file;
 	}

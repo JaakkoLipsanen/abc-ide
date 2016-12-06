@@ -6,6 +6,7 @@ Will support auto-indent, syntax higlighting and running/compiling files with a 
 - [Tuntikirjaus](/dokumentaatio/tuntikirjaus.md)
 - [Aiheenmäärittely](/dokumentaatio/aihemäärittely.md)
 - [Luokkakaavio](/dokumentaatio/luokkakaavio.png)
+- [Käyttöohje](/dokumentaatio/kayttoohje.md)
 
 - [PIT-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/pit-raportti/index.html)
 - [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)

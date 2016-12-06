@@ -67,6 +67,8 @@ public class EditorPage implements Page {
 		newButton.setOnAction(e -> {
 			_editorViewModel.loadDefaultSnippet();
 			_codeEditor.resetFromViewModel();
+			
+			_console.clearOutput();
 		});
 		
 		// just an empty control that takes some space in the toolbar to create a gap
@@ -135,6 +137,7 @@ public class EditorPage implements Page {
 		if(selectedFile != null && selectedFile.exists()) {
 			if(_editorViewModel.loadSnippetFromFile(selectedFile)) {
 				_codeEditor.resetFromViewModel();
+				_console.clearOutput();
 			}
 			else {
 				_console.setError("Error loading file");

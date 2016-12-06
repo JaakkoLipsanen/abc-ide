@@ -6,7 +6,7 @@
 package com.flai.ide.model.codecompilers;
 
 /**
- *
+ * The result of of the compilation
  * @author Jaakko
  */
 public final class CompileResult {
@@ -30,6 +30,9 @@ public final class CompileResult {
 		this.ProgramInfo = programInfo;
 	}
 	
+	/**
+	 * Enum holding the status of the compilation
+	 */
 	public static enum CompileStatus {
 		OK,
 		WRONG_JAVA_SETUP,

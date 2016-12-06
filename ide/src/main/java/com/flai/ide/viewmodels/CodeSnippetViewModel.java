@@ -60,14 +60,28 @@ public class CodeSnippetViewModel {
 		return _snippet.getText();
 	}
 	
-	public CodeBlockContainer parseCode(String code) {
+	/**
+	 * Parses the code into code blocks
+	 * @param code given code
+	 * @return collection of code blocks
+	 */
+	public CodeBlockContainer parseCode(String code) { // meh that it takes the code as a parameter..
 		return _codeParser.parseCode(code);
 	}
 	
+	/**
+	 * compiles the code
+	 * @return the result of the compilation
+	 */
 	public CompileResult compileCode() {
 		return _codeCompiler.compileCode(_snippet.getText());
 	}
 	
+	/**
+	 * saves the code snippet to a file
+	 * @param file file to save the snippet into
+	 * @return whether save was succesful or not
+	 */
 	public boolean saveToFile(File file) {
 		try {
 			Files.write(file.toPath(), _snippet.getText().getBytes());

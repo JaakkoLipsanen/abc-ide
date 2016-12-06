@@ -15,6 +15,8 @@ import java.io.File;
  * @author Jaakko
  */
 public class EditorViewModel {
+	
+	// todo: multiple CodeSnippets? I could have tabs in the editor to change between the open code snippets?
 
 	/**
 	 * The current code snippet file that is being edited/displayed in GUI.
@@ -28,6 +30,11 @@ public class EditorViewModel {
 		return _currentSnippet;
 	}
 
+	/**
+	 * Loads a code snippet from a file and sets it as a the current snippet
+	 * @param file file to load snippet from
+	 * @return whether load was succesful or not
+	 */
 	public boolean loadSnippetFromFile(File file) {
 		String text = MiscHelper.readTextFromFile(file);
 		if(text == null) {
@@ -40,6 +47,9 @@ public class EditorViewModel {
 		return true;
 	}
 
+	/**
+	 * Loads the default snippet and sets it as the current snippet
+	 */
 	public void loadDefaultSnippet() {
 		_currentSnippet = new CodeSnippetViewModel(createDefaultCodeSnippet());
 	}

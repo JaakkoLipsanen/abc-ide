@@ -9,10 +9,19 @@ import java.util.Arrays;
  */
 public class StringHelper {
 
+	/**
+	 * Returns whether the given string is null, empty or contains just whitespaces ('\t' '\n' ' ' etc)
+	 */
 	public static boolean isEmptyOrWhitespace(String s) { 
 		return (s == null) || s.trim().equals("");
 	}
 	
+	/**
+	 * Repeats a character for n times
+	 * @param c character to repeat
+	 * @param n amount of repeats
+	 * @return string containing character c repeated n times 
+	 */
 	public static String repeat(char c, int n) {
 		char[] chars = new char[n];
 		Arrays.fill(chars, c);
@@ -20,6 +29,13 @@ public class StringHelper {
 		return new String(chars);
 	}
 
+	/**
+	 * Inserts a string into another string
+	 * @param original the string to which the other string will be inserted
+	 * @param index index where the other string will be inserted at
+	 * @param stringToInsert the other string to be inserted
+	 * @return a string containing the inserted string
+	 */
 	public static String insert(String original, int index, String stringToInsert) {
 		String start = original.substring(0, index);
 		String end = original.substring(index);
@@ -27,6 +43,13 @@ public class StringHelper {
 		return start + stringToInsert + end;
 	}
 	
+	/**
+	 * Removes a substring from a string
+	 * @param original the input string
+	 * @param startIndex the index in which the substring starts
+	 * @param count length of substring
+	 * @return string with the substring removed
+	 */
 	public static String removeSubstring(String original, int startIndex, int count) {
 		assert original.length() >= startIndex + count;
 		return original.substring(0, startIndex) + original.substring(startIndex + count);
@@ -82,6 +105,9 @@ public class StringHelper {
 		return new TextInsert(firstDifferentIndex, newValue.substring(firstDifferentIndex, lastDifferentIndex + 1));
 	}
 
+	/**
+	 * A class that holds information about an insertion of a string
+	 */
 	public static class TextInsert {
 
 		public final int StartIndex;

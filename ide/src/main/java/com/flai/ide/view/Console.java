@@ -6,7 +6,6 @@
 package com.flai.ide.view;
 
 import com.flai.ide.StringHelper;
-import com.flai.ide.model.codecompilers.CodeCompiler;
 import com.flai.ide.model.codecompilers.ProgramInfo;
 import com.flai.ide.model.codecompilers.ProgramInfo.InputStreamListener;
 import com.flai.ide.model.codecompilers.ProgramInfo.OutputStreamBroadcaster;
@@ -27,7 +26,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * An GUI control that contains the output and input of the running program
  * @author Jaakko
  */
 public class Console implements Control {
@@ -62,11 +61,20 @@ public class Console implements Control {
 		return box;
 	}
 	
+	/**
+	 * Sets the output of the console to the given error message
+	 * @param errorMessage message to show
+	 */
 	public void setError(String errorMessage) {
+		// todo: display in red or something?
 		this.clearOutput();
 		this.writeToOutput(errorMessage);
 	}
 
+	/**
+	 * Attaches the stdin/stderr/stdout listeners to the given program
+	 * @param programInfo program to attach listeners to
+	 */
 	public void attachIOStreamsToProgram(ProgramInfo programInfo) {
 		this.clearOutput();
 		this.detachIOStreams();
@@ -89,6 +97,9 @@ public class Console implements Control {
 		}, 0, TimerFrequency);
 	}
 	
+	/**
+	 * detaches the stdin/stdout/stderr listeners
+	 */
 	public void detachIOStreams() {
 		getOutputFromStreams();
 		
@@ -126,7 +137,10 @@ public class Console implements Control {
 		 });
 	}
 	
-	private void clearOutput() {
+	/**
+	 * Clears the output console
+	 */
+	public void clearOutput() {
 		_outputTextArea.clear();
 	}
 	

@@ -95,6 +95,9 @@ public class CodeEditorControl implements Control {
 		}
 	}
 
+	/**
+	 * Reads the data again from the view model
+	 */
 	public void resetFromViewModel() {
 		// set the initial text to CodeSnippet.text (that is loaded from file/the default text that is generated)
 		String initialText = _editor.getCurrentCodeSnippet().getCode();

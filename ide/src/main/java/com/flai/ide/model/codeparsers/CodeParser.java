@@ -27,6 +27,9 @@ public interface CodeParser {
 		throw new IllegalArgumentException("");
 	}
 	
+	/**
+	 * Type of code block
+	 */
 	public enum CodeBlockType {
 		Keyword,
 		
@@ -51,6 +54,9 @@ public interface CodeParser {
 		// ^^ these require actual parsing etc and that too hc for this project
 	}
 	
+	/**
+	 * An collection of CodeBlocks
+	 */
 	public class CodeBlockContainer implements Iterable<CodeBlock> {
 		private final CodeBlock[] _codeBlocks;
 		public CodeBlockContainer(Collection<CodeBlock> blocks) {
@@ -72,6 +78,9 @@ public interface CodeParser {
 		}
 	}
 		
+	/**
+	 * Class representing an code block. Has the type and start & end indices
+	 */
 	public class CodeBlock {
 		public final int StartIndex;
 		public final int EndIndex;

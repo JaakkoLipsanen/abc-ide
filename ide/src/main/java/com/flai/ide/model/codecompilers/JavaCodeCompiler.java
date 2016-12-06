@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- *
+ * CodeCompiler for Java
  * @author Jaakko
  */
-public class JavaCodeCompiler implements CodeCompiler {
+class JavaCodeCompiler implements CodeCompiler {
 	private static final String FILE_NAME = "Snippet";
 	
 	@Override

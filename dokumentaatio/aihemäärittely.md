@@ -7,6 +7,6 @@ onnistuu ihan vaan uuden tiedoston tekemisellä johonkin kansioon. Mahdollisesti
 Koodarit
 
 ## Toiminnot
-Ladata ja tallentaa tekstitiedostoja
-Muokata tekstitiedostoja
-Kääntää tiedostoja (tai projekteja)
+Ladata ja tallentaa koodisnippettejä
+Muokata koodisnippettejä
+Kääntää (ja ajaa) snippettejä

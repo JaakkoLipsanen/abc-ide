@@ -51,7 +51,7 @@ public class CodeSnippetViewModel {
 	 */
 	public String setAndFormatNewCode(String newCode, int caretPosition) { // HMMM!! Should I make "insertCode" function? It'd maybe be clearer!!
 		if (!newCode.equals(_snippet.getText())) {
-			String processedCode = _codeFormatter.processNewCode(_snippet.getText(), newCode, caretPosition);
+			String processedCode = _codeFormatter.formatCode(_snippet.getText(), newCode, caretPosition);
 			_snippet.setText(processedCode);
 
 			return processedCode;
@@ -86,7 +86,8 @@ public class CodeSnippetViewModel {
 		try {
 			Files.write(file.toPath(), _snippet.getText().getBytes());
 			return true;
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) {
 			return false;
 		}
 		

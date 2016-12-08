@@ -94,7 +94,8 @@ class JavaCodeCompiler implements CodeCompiler {
 				
 				return file;
 			}
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) {
 			return null;
 		}
 	}

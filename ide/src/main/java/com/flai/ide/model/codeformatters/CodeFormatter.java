@@ -14,7 +14,7 @@ import com.flai.ide.model.ProgrammingLanguage;
  */
 public interface CodeFormatter {
 
-	public String processNewCode(String oldCode, String newCode, int caretPosition);
+	public String formatCode(String oldCode, String newCode, int caretPosition);
 	public static CodeFormatter create(ProgrammingLanguage language) {
 		switch (language) {
 			case JAVA:

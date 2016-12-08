@@ -121,7 +121,7 @@ public class Console implements Control {
 	
 	private void getOutputFromStreams() {
 		 Platform.runLater(() -> { // Platform.runLater == execute in the main/UI thread asap		
-			 if(_programOutput != null) {
+			if(_programOutput != null) {
 				String outputText = _programOutput.getNewText();
 				if(!outputText.isEmpty()) {
 					writeToOutput(outputText);
@@ -159,7 +159,7 @@ public class Console implements Control {
 			_inputTextField.clear();
 
 			if(_programInput != null) {
-				_programInput.writeLine(inputText );
+				_programInput.writeLine(inputText);
 			}
 		}
 	}
@@ -181,7 +181,8 @@ public class Console implements Control {
 						_text.append((char)value);
 					}
 				}
-			} catch (IOException e) { }
+			} 
+			catch (IOException e) { }
 		}
 
 		@Override
@@ -218,7 +219,8 @@ public class Console implements Control {
 			try {
 				_outputWriter.write(text);
 				_outputWriter.flush();
-			} catch (IOException e) { }
+			} 
+			catch (IOException e) { }
 		}
 		
 		public void writeLine(String text) {

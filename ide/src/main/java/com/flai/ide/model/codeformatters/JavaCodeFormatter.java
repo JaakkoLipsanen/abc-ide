@@ -23,7 +23,7 @@ class JavaCodeFormatter implements CodeFormatter {
 	// TODO: when closing brace is inputted, format that also properly
 	
 	@Override
-	public String processNewCode(String oldCode, String newCode, int caretPosition) {
+	public String formatCode(String oldCode, String newCode, int caretPosition) {
 		/* If the diff between oldCode and newCode is a newline ("\n"),
 		 then add a proper indentatation  */
 

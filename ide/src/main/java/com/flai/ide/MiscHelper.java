@@ -18,8 +18,6 @@ import java.util.Scanner;
  * @author Jaakko
  */
 public class MiscHelper {
-	
-	
 		
 	/**
 	 * returns the stack trace of the parameter throwable as a string
@@ -55,7 +53,8 @@ public class MiscHelper {
 	public static String readTextFromFile(File file) {
 		try {
 			return new String(Files.readAllBytes(file.toPath()));
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			return null;
 		}
 	}

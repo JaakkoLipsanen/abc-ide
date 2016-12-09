@@ -50,9 +50,4 @@ public class CodeSnippetViewModelTest {
 	 public void parseCode1() {
 		 assertTrue(_vm.parseCode("{").get(0).Type == CodeParser.CodeBlockType.OpeningBrace);
 	 }
-	 
-	  @Test
-	 public void saveToFile() {
-		 assertTrue(_vm.saveToFile(new File("K://")) == false);
-	 }
 }

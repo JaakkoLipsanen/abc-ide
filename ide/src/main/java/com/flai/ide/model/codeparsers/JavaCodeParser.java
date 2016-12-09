@@ -48,10 +48,10 @@ class JavaCodeParser implements CodeParser {
 			else if (c == '"') { // if c is ", then it is the start of string literal
 				createBlockFunction = () -> createStringLiteral(codeBlocks, code, currentIndex);
 			}
-			else if(isStringStartingAt(code, currentIndex, "//")) { // start of single line comment
+			else if(isSubstringStartingAt(code, currentIndex, "//")) { // start of single line comment
 				createBlockFunction = () -> createSingleLineComment(codeBlocks, code, currentIndex);
 			}
-			else if(isStringStartingAt(code, currentIndex, "/*")) { // start of multi line comment
+			else if(isSubstringStartingAt(code, currentIndex, "/*")) { // start of multi line comment
 				createBlockFunction = () -> createMultiLineComment(codeBlocks, code, currentIndex);
 			}
 			else if(c == '{') { // opening brace
@@ -60,7 +60,7 @@ class JavaCodeParser implements CodeParser {
 			else if(c == '}') { // closing brace
 				createBlockFunction = () -> createCodeBlock(codeBlocks, CodeBlockType.ClosingBrace, currentIndex, 1);
 			}
-			else if(isKeywordStartingAt(codeBlocks, currentIndex, code)) { // keyword ("public", "float" etc)
+			else if(isKeywordStartingAt(currentIndex, code)) { // keyword ("public", "float" etc)
 				createBlockFunction = () -> createKeyword(codeBlocks, code, currentIndex);
 			}
 			else { // a non-special character, continue on
@@ -144,7 +144,7 @@ class JavaCodeParser implements CodeParser {
 		
 		int endIndex = startIndex + "//".length();
 		for (; endIndex < code.length(); endIndex++) {
-			if (this.isStringStartingAt(code, endIndex, "*/")) {
+			if (this.isSubstringStartingAt(code, endIndex, "*/")) {
 				endIndex += "*/".length();
 				break;
 			}
@@ -154,9 +154,20 @@ class JavaCodeParser implements CodeParser {
 		return endIndex;
 	}
 	
-	private boolean isKeywordStartingAt(ArrayList<CodeBlock> codeBlocks, int startIndex, String code) {
+	private boolean isKeywordStartingAt(int startIndex, String code) {
+		if(startIndex != 0 && Character.isAlphabetic(code.charAt(startIndex - 1))) {
+			return false;
+		}
+		
 		for(String keyword : JavaCodeParser.KEYWORDS) {
-			if(isStringStartingAt(code, startIndex, keyword)) {
+			if(isSubstringStartingAt(code, startIndex, keyword)) {
+				
+				int endIndex = startIndex + keyword.length();
+				if(code.length() > endIndex && Character.isAlphabetic(code.charAt(endIndex)))
+				{
+					continue;
+				}
+				
 				return true;
 			}
 		}
@@ -166,7 +177,7 @@ class JavaCodeParser implements CodeParser {
 	
 	private int createKeyword(ArrayList<CodeBlock> codeBlocks, String code, int startIndex) {
 		for(String keyword : JavaCodeParser.KEYWORDS) {
-			if(isStringStartingAt(code, startIndex, keyword)) {
+			if(isSubstringStartingAt(code, startIndex, keyword)) {
 				codeBlocks.add(new CodeBlock(startIndex, startIndex + keyword.length(), CodeBlockType.Keyword));
 				return startIndex + keyword.length();
 			}
@@ -180,7 +191,7 @@ class JavaCodeParser implements CodeParser {
 		return startIndex + length;
 	}
 	
-	private boolean isStringStartingAt(String originalCode, int index, String stringToSearch) {
+	private boolean isSubstringStartingAt(String originalCode, int index, String stringToSearch) {
 		if (originalCode.length() < index + stringToSearch.length()) {
 			return false;
 		}

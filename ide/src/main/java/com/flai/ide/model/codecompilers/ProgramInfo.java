@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 import javafx.application.Platform;
 
 /**
- * Class that holds information about an program and has ability to run it
+ * Class that holds information about an program and has ability to run it.
  * @author Jaakko
  */
 public final class ProgramInfo {
@@ -30,7 +30,7 @@ public final class ProgramInfo {
 	}
 
 	/**
-	 * Sets the stdout listener
+	 * Sets the stdout listener.
 	 * @param listener 
 	 */
 	public void setOutputListener(InputStreamListener listener) {
@@ -38,7 +38,7 @@ public final class ProgramInfo {
 	}
 
 	/**
-	 * Sets the stderr listener 
+	 * Sets the stderr listener.
 	 * @param listener 
 	 */
 	public void setErrorListener(InputStreamListener listener) {
@@ -46,7 +46,7 @@ public final class ProgramInfo {
 	}
 
 	/**
-	 * sets the stdin 'broadcaster'
+	 * sets the stdin 'broadcaster'.
 	 * @param broadcaster 
 	 */
 	public void setInputBroadcaster(OutputStreamBroadcaster broadcaster) {
@@ -54,7 +54,7 @@ public final class ProgramInfo {
 	}
 	
 	/**
-	 * Sets the callback for when the program has finished running 
+	 * Sets the callback for when the program has finished running.
 	 * @param finishedListener 
 	 */
 	public void setProgramFinishedListener(Consumer<Integer> finishedListener) {
@@ -62,7 +62,7 @@ public final class ProgramInfo {
 	}
 
 	/**
-	 * runs/executes the program
+	 * runs/executes the program.
 	 */
 	public void run() {
 		new Thread() { // run the app in different thread so that the app doesn't freeze/get blocked
@@ -80,16 +80,24 @@ public final class ProgramInfo {
 	}
 	
 	/**
-	 * stdout/stderr listener
+	 * stdout/stderr listener.
 	 */
 	public interface InputStreamListener {
+		/**
+		 * Sets the inputstream to listen.
+		 * @param stream input stream to listen
+		 */
 		void setStream(InputStream stream);
 	}
 
 	/**
-	 * stdout 'broadcaster'
+	 * stdout 'broadcaster'.
 	 */
 	public interface OutputStreamBroadcaster {
+		/**
+		 * sets the output stream to broadcast to.
+		 * @param stream output stream to broadcast to
+		 */
 		void setStream(OutputStream stream);
 	}
 
@@ -97,7 +105,14 @@ public final class ProgramInfo {
 	 * Common interface for running an program.
 	 */
 	public interface ProgramRunner {
-		// returns exit code
+		
+		/**
+		 * Runs the program.
+		 * @param input stdout listener
+		 * @param error stderr listener
+		 * @param output stdin 'broadcaster'
+		 * @return exit code
+		 */
 		int run(InputStreamListener input, InputStreamListener error, OutputStreamBroadcaster output);
 	}
 }

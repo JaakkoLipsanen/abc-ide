@@ -1,7 +1,7 @@
 package com.flai.ide.model;
 
 /**
- * A class that holds information about a code snippet/file
+ * A class that holds information about a code snippet/file.
  * @author Jaakko
  */
 public class CodeSnippet {
@@ -11,6 +11,11 @@ public class CodeSnippet {
 	// todo: file path?
 	// todo: last modified date
 
+	/**
+	 * Constructor of CodeSnippet.
+	 * @param code the code in the snippet
+	 * @param language language of the snippet
+	 */
 	public CodeSnippet(String code, ProgrammingLanguage language) {
 		_code = code;
 		_programmingLanguage = language;

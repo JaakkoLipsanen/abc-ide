@@ -16,8 +16,19 @@ import java.util.Iterator;
  * @author Jaakko
  */
 public interface CodeParser {
+	
+	/**
+	 * Parses the code.
+	 * @param code code to parse
+	 * @return parsed code
+	 */
 	CodeBlockContainer parseCode(String code);
 	
+	/**
+	 * Creates CodeParser for the given language.
+	 * @param language language from which to create the CodeParsers
+	 * @return created CodeParser
+	 */
 	public static CodeParser create(ProgrammingLanguage language) {
 		switch (language) {
 			case JAVA:
@@ -28,7 +39,7 @@ public interface CodeParser {
 	}
 	
 	/**
-	 * Type of code block
+	 * Type of code block.
 	 */
 	public enum CodeBlockType {
 		Keyword,
@@ -55,18 +66,32 @@ public interface CodeParser {
 	}
 	
 	/**
-	 * An collection of CodeBlocks
+	 * An collection of CodeBlocks.
 	 */
 	public class CodeBlockContainer implements Iterable<CodeBlock> {
 		private final CodeBlock[] _codeBlocks;
+		
+		/**
+		 * Constructor.
+		 * @param blocks CodeBlock collection 
+		 */
 		public CodeBlockContainer(Collection<CodeBlock> blocks) {
 			_codeBlocks = blocks.toArray(new CodeBlock[blocks.size()]);
 		}
 		
+		/**
+		 * Returns count of the code blocks in the container.
+		 * @return Returns count of the code blocks in the container
+		 */
 		public int getCount() {
 			return _codeBlocks.length;
 		}
 		
+		/**
+		 * Gets CodeBlock from the given index.
+		 * @param i the index
+		 * @return CodeBlock from index i
+		 */
 		public CodeBlock get(int i) {
 			assert i >= 0 && i < _codeBlocks.length;
 			return _codeBlocks[i];
@@ -79,7 +104,7 @@ public interface CodeParser {
 	}
 		
 	/**
-	 * Class representing an code block. Has the type and start & end indices
+	 * Class representing an code block. Has the type and start & end indices.
 	 */
 	public class CodeBlock {
 		public final int StartIndex;
@@ -88,10 +113,23 @@ public interface CodeParser {
 		public final CodeBlockType Type;
 		public final Object Tag; // you can put some metadata here (like what specific keyword it is)
 		
+		/**
+		 * Constructor.
+		 * @param from start index of the CodeBlock
+		 * @param to end index of the block
+		 * @param type type of the block
+		 */
 		public CodeBlock(int from, int to, CodeBlockType type) {
 			this(from, to, type, null);
 		}
 		
+		/**
+		 * Constructor.
+		 * @param from start index of the CodeBlock
+		 * @param to end index of the block
+		 * @param type type of the block
+		 * @param tag tag for the block, can contain some extra data
+		 */
 		public CodeBlock(int from, int to, CodeBlockType type, Object tag) {
 			this.StartIndex = from;
 			this.EndIndex = to;

@@ -8,21 +8,21 @@ package com.flai.ide.model.codecompilers;
 import com.flai.ide.model.ProgrammingLanguage;
 
 /**
- * An common interface for all CodeCompiler's
+ * An common interface for all CodeCompiler's.
  * @author Jaakko
  */
 public interface CodeCompiler {
 
 	/**
-	 * 
-	 * @param compiles the code
+	 *  Compiles the code.
+	 * @param code code to compile
 	 * @return result of compilation
 	 */
 	CompileResult compileCode(String code);
 
 	/**
-	 * Creates an CodeCompiler for the given language
-	 * @param language
+	 * Creates an CodeCompiler for the given language.
+	 * @param language the language which CodeCompiler should be created
 	 * @return CodeCompiler
 	 */
 	public static CodeCompiler create(ProgrammingLanguage language) {

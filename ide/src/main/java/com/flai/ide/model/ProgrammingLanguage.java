@@ -6,7 +6,7 @@
 package com.flai.ide.model;
 
 /**
- *
+ * Enum representing a programming language.
  * @author Jaakko
  */
 public enum ProgrammingLanguage {

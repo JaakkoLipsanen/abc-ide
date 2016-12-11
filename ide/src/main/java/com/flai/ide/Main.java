@@ -10,6 +10,10 @@ public class Main extends Application {
 
 	private Page _currentPage = createDefaultPage();
 
+	/**
+	 * Entry point of the program.
+	 * @param args program arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -26,7 +26,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
 /**
- * An GUI control that contains the output and input of the running program
+ * An GUI control that contains the output and input of the running program.
  * @author Jaakko
  */
 public class Console implements Control {
@@ -62,7 +62,7 @@ public class Console implements Control {
 	}
 	
 	/**
-	 * Sets the output of the console to the given error message
+	 * Sets the output of the console to the given error message.
 	 * @param errorMessage message to show
 	 */
 	public void setError(String errorMessage) {
@@ -72,7 +72,7 @@ public class Console implements Control {
 	}
 
 	/**
-	 * Attaches the stdin/stderr/stdout listeners to the given program
+	 * Attaches the stdin/stderr/stdout listeners to the given program.
 	 * @param programInfo program to attach listeners to
 	 */
 	public void attachIOStreamsToProgram(ProgramInfo programInfo) {
@@ -98,7 +98,7 @@ public class Console implements Control {
 	}
 	
 	/**
-	 * detaches the stdin/stdout/stderr listeners
+	 * detaches the stdin/stdout/stderr listeners.
 	 */
 	public void detachIOStreams() {
 		getOutputFromStreams();
@@ -120,7 +120,7 @@ public class Console implements Control {
 	}
 	
 	private void getOutputFromStreams() {
-		 Platform.runLater(() -> { // Platform.runLater == execute in the main/UI thread asap		
+		Platform.runLater(() -> { // Platform.runLater == execute in the main/UI thread asap		
 			if(_programOutput != null) {
 				String outputText = _programOutput.getNewText();
 				if(!outputText.isEmpty()) {
@@ -134,11 +134,11 @@ public class Console implements Control {
 					writeToOutput(errorText); // writeToOutputError(..) ?
 				}
 			}
-		 });
+		});
 	}
 	
 	/**
-	 * Clears the output console
+	 * Clears the output console.
 	 */
 	public void clearOutput() {
 		_outputTextArea.clear();
@@ -178,7 +178,7 @@ public class Console implements Control {
 				int value = -1;
 				while (_isRunning && (value = _reader.read()) != -1) {		
 					synchronized(_text) {
-						_text.append((char)value);
+						_text.append((char) value);
 					}
 				}
 			} 

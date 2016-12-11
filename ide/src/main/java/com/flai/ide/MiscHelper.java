@@ -14,13 +14,12 @@ import java.nio.file.Files;
 import java.util.Scanner;
 
 /**
- *
+ * A collection of helper functions.
  * @author Jaakko
  */
 public class MiscHelper {
 		
-	/**
-	 * returns the stack trace of the parameter throwable as a string
+	/** Returns the stack trace of the parameter throwable as a string.
 	 * @param t the throwable from which to return the stack trace from
 	 * @return string containing the stack trace
 	 */
@@ -36,7 +35,7 @@ public class MiscHelper {
 	}
 	
 	/**
-	 * Reads an input stream and returns the contents of it as a string
+	 * Reads an input stream and returns the contents of it as a string.
 	 * @param is 
 	 * @return contents of the input stream
 	 */
@@ -46,7 +45,7 @@ public class MiscHelper {
 	}
 	
 	/**
-	 * Reads all text from a file
+	 * Reads all text from a file.
 	 * @param file the file from which to read
 	 * @return the contents of the file as a string
 	 */
@@ -60,7 +59,8 @@ public class MiscHelper {
 	}
 	
 	/**
-	 * Returns true if the current OS is windows
+	 * Returns true if the current OS is windows.
+	 * @return true if the OS is Windows, false otherwise
 	 */
 	public static boolean isWindowsOS() {
 		return System.getProperty("os.name").contains("Windows");

@@ -112,15 +112,13 @@ public class EditorPage implements Page {
 		FileChooser chooser = new FileChooser();
 		chooser.setTitle("Save code file");
 		chooser.getExtensionFilters().addAll(
-			new FileChooser.ExtensionFilter("Java files", "*.java")); // only .java files supported atm
-		//	new FileChooser.ExtensionFilter("All files", "*.*"));
+						new FileChooser.ExtensionFilter("Java files", "*.java")); // only .java files supported atm
+					//	new FileChooser.ExtensionFilter("All files", "*.*"));
 
 		File selectedFile = chooser.showSaveDialog(stage);
 		if(selectedFile != null) {
-			if(_editorViewModel.getCurrentCodeSnippet().saveToFile(selectedFile)) {
-				// save succesful, yay
-			}
-			else {
+			boolean saveSuccesful = _editorViewModel.getCurrentCodeSnippet().saveToFile(selectedFile); 
+			if(!saveSuccesful) {
 				_console.setError("Error saving file");
 			}
 		}
@@ -130,8 +128,8 @@ public class EditorPage implements Page {
 		FileChooser chooser = new FileChooser();
 		chooser.setTitle("Open code file");
 		chooser.getExtensionFilters().addAll(
-			new FileChooser.ExtensionFilter("Java files", "*.java")); // only .java files supported atm
-		//	new FileChooser.ExtensionFilter("All files", "*.*"));
+						new FileChooser.ExtensionFilter("Java files", "*.java")); // only .java files supported atm
+					//	new FileChooser.ExtensionFilter("All files", "*.*"));
 
 		File selectedFile = chooser.showOpenDialog(stage);
 		if(selectedFile != null && selectedFile.exists()) {

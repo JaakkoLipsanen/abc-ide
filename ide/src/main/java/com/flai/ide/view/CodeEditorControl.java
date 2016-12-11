@@ -20,7 +20,7 @@ import org.fxmisc.undo.UndoManagerFactory;
 
 /**
  * This is the GUI control that modifies and displays the code/text (aka 95% of
- * the app)
+ * the app).
  *
  * @author Jaakko
  */
@@ -35,6 +35,10 @@ public class CodeEditorControl implements Control {
 	 */
 	private StyleClassedTextArea _codeTextControl;
 
+	/**
+	 * Constructor.
+	 * @param editor the editor view model 
+	 */
 	public CodeEditorControl(EditorViewModel editor) {
 		_editor = editor;
 	}
@@ -96,7 +100,7 @@ public class CodeEditorControl implements Control {
 	}
 
 	/**
-	 * Reads the data again from the view model
+	 * Reads the data again from the view model.
 	 */
 	public void resetFromViewModel() {
 		// set the initial text to CodeSnippet.text (that is loaded from file/the default text that is generated)

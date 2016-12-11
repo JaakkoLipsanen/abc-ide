@@ -22,6 +22,10 @@ public class CodeSnippetViewModel {
 	private final CodeParser _codeParser;
 	private final CodeCompiler _codeCompiler;
 
+	/**
+	 * Constructor.
+	 * @param snippet CodeSnippet from which to create the VM 
+	 */
 	public CodeSnippetViewModel(CodeSnippet snippet) {
 		_snippet = snippet;
 		
@@ -39,7 +43,7 @@ public class CodeSnippetViewModel {
 	 * when "\n" (aka newline) is inputted, the proper indentation/tabs will be
 	 * added here
 	 *
-	 * @param newValue the value that is to be setted
+	 * @param newCode the value that is to be setted
 	 * @param caretPosition The position where the cursor/caret was after the
 	 * new code was inputted. TODO: this sucks, a better alternative would be
 	 * that I'd make some kind of "Diff" class which would hold the precise
@@ -61,7 +65,7 @@ public class CodeSnippetViewModel {
 	}
 	
 	/**
-	 * Parses the code into code blocks
+	 * Parses the code into code blocks.
 	 * @param code given code
 	 * @return collection of code blocks
 	 */
@@ -70,7 +74,7 @@ public class CodeSnippetViewModel {
 	}
 	
 	/**
-	 * compiles the code
+	 * compiles the code.
 	 * @return the result of the compilation
 	 */
 	public CompileResult compileCode() {
@@ -78,7 +82,7 @@ public class CodeSnippetViewModel {
 	}
 	
 	/**
-	 * saves the code snippet to a file
+	 * saves the code snippet to a file.
 	 * @param file file to save the snippet into
 	 * @return whether save was succesful or not
 	 */

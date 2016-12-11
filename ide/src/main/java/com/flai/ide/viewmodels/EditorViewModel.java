@@ -11,7 +11,7 @@ import com.flai.ide.model.ProgrammingLanguage;
 import java.io.File;
 
 /**
- * The main/root ViewModel, holds all data about the entire app
+ * The main/root ViewModel, holds all data about the entire app.
  * @author Jaakko
  */
 public class EditorViewModel {
@@ -23,15 +23,12 @@ public class EditorViewModel {
 	 */
 	private CodeSnippetViewModel _currentSnippet = new CodeSnippetViewModel(createDefaultCodeSnippet());
 
-	public EditorViewModel() {
-	}
-
 	public CodeSnippetViewModel getCurrentCodeSnippet() {
 		return _currentSnippet;
 	}
 
 	/**
-	 * Loads a code snippet from a file and sets it as a the current snippet
+	 * Loads a code snippet from a file and sets it as a the current snippet.
 	 * @param file file to load snippet from
 	 * @return whether load was succesful or not
 	 */
@@ -48,14 +45,14 @@ public class EditorViewModel {
 	}
 
 	/**
-	 * Loads the default snippet and sets it as the current snippet
+	 * Loads the default snippet and sets it as the current snippet.
 	 */
 	public void loadDefaultSnippet() {
 		_currentSnippet = new CodeSnippetViewModel(createDefaultCodeSnippet());
 	}
 	
 	/**
-	 * Creates the default code snippet (in Java: main class and main method)
+	 * Creates the default code snippet (in Java: main class and main method).
 	 * todo: add somekind of flag for what language is being asked (java or c#
 	 * or python etc)
 	 *

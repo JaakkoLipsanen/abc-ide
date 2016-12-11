@@ -16,20 +16,13 @@ import java.util.function.Supplier;
 class JavaCodeParser implements CodeParser {
 
 	private static final String KEYWORDS[] = {
-		"public", "private", "protected",
-		"class", "interface", "enum",
-		"abstract", "final", "static",
-		"break", "continue", "return", "assert",
-		"try", "catch", "throw", "throws", "finally",
-		"while", "for", "switch", "case",
-		"volatile", "synchronized", "transient",
-		"byte", "char", "short", "int", "long", "void",	
-		"float", "double", "do", "default",
-		"this", "super", "new",
-		"native", "package", "import",
-		"instanceof", "implements", "extends",
-		"if", "else", "goto",
-		"true", "false",
+		"public", "private", "protected", "class", "interface", "enum",
+		"abstract", "final", "static", "break", "continue", "return", "assert",
+		"try", "catch", "throw", "throws", "finally", "while", "for", "switch", "case",
+		"volatile", "synchronized", "transient", "byte", "char", "short", "int", "long", "void",	
+		"float", "double", "do", "default", "this", "super", "new",
+		"native", "package", "import", "instanceof", "implements", "extends",
+		"if", "else", "goto", "true", "false",
 	};
 	
 	@Override
@@ -80,8 +73,6 @@ class JavaCodeParser implements CodeParser {
 	}
 
 	private int createCharLiteral(Collection<CodeBlock> blocks, String code, int startIndex) {
-		assert code.charAt(startIndex) == '\'';
-
 		int endIndex;
 		if(code.length() == startIndex + 1) { // just ' in the end of file
 			endIndex = startIndex + 1;

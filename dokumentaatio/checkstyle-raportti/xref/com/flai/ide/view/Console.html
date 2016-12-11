@@ -34,7 +34,7 @@
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> javafx.scene.layout.VBox;
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * An GUI control that contains the output and input of the running program</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * An GUI control that contains the output and input of the running program.</em>
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * @author Jaakko</em>
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/flai/ide/view/Console.html">Console</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../com/flai/ide/view/Control.html">Control</a> {
@@ -70,7 +70,7 @@
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  	}
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  	
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">	 * Sets the output of the console to the given error message</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">	 * Sets the output of the console to the given error message.</em>
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">	 * @param errorMessage message to show</em>
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setError(String errorMessage) {
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>  	}
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>  
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>  	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  <em class="jxr_javadoccomment">	 * Attaches the stdin/stderr/stdout listeners to the given program</em>
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  <em class="jxr_javadoccomment">	 * Attaches the stdin/stderr/stdout listeners to the given program.</em>
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>  <em class="jxr_javadoccomment">	 * @param programInfo program to attach listeners to</em>
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>  <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> attachIOStreamsToProgram(<a href="../../../../com/flai/ide/model/codecompilers/ProgramInfo.html">ProgramInfo</a> programInfo) {
@@ -106,7 +106,7 @@
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>  	}
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>  	
 <a class="jxr_linenumber" name="L100" href="#L100">100</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L101" href="#L101">101</a> <em class="jxr_javadoccomment">	 * detaches the stdin/stdout/stderr listeners</em>
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> <em class="jxr_javadoccomment">	 * detaches the stdin/stdout/stderr listeners.</em>
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> detachIOStreams() {
 <a class="jxr_linenumber" name="L104" href="#L104">104</a> 		getOutputFromStreams();
@@ -128,7 +128,7 @@
 <a class="jxr_linenumber" name="L120" href="#L120">120</a> 	}
 <a class="jxr_linenumber" name="L121" href="#L121">121</a> 	
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> getOutputFromStreams() {
-<a class="jxr_linenumber" name="L123" href="#L123">123</a> 		 Platform.runLater(() -&gt; { <em class="jxr_comment">// Platform.runLater == execute in the main/UI thread asap		</em>
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> 		Platform.runLater(() -&gt; { <em class="jxr_comment">// Platform.runLater == execute in the main/UI thread asap		</em>
 <a class="jxr_linenumber" name="L124" href="#L124">124</a> 			<strong class="jxr_keyword">if</strong>(_programOutput != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L125" href="#L125">125</a> 				String outputText = _programOutput.getNewText();
 <a class="jxr_linenumber" name="L126" href="#L126">126</a> 				<strong class="jxr_keyword">if</strong>(!outputText.isEmpty()) {
@@ -142,11 +142,11 @@
 <a class="jxr_linenumber" name="L134" href="#L134">134</a> 					writeToOutput(errorText); <em class="jxr_comment">// writeToOutputError(..) ?</em>
 <a class="jxr_linenumber" name="L135" href="#L135">135</a> 				}
 <a class="jxr_linenumber" name="L136" href="#L136">136</a> 			}
-<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		 });
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		});
 <a class="jxr_linenumber" name="L138" href="#L138">138</a> 	}
 <a class="jxr_linenumber" name="L139" href="#L139">139</a> 	
 <a class="jxr_linenumber" name="L140" href="#L140">140</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L141" href="#L141">141</a> <em class="jxr_javadoccomment">	 * Clears the output console</em>
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> <em class="jxr_javadoccomment">	 * Clears the output console.</em>
 <a class="jxr_linenumber" name="L142" href="#L142">142</a> <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="L143" href="#L143">143</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> clearOutput() {
 <a class="jxr_linenumber" name="L144" href="#L144">144</a> 		_outputTextArea.clear();
@@ -186,7 +186,7 @@
 <a class="jxr_linenumber" name="L178" href="#L178">178</a> 				<strong class="jxr_keyword">int</strong> value = -1;
 <a class="jxr_linenumber" name="L179" href="#L179">179</a> 				<strong class="jxr_keyword">while</strong> (_isRunning &amp;&amp; (value = _reader.read()) != -1) {		
 <a class="jxr_linenumber" name="L180" href="#L180">180</a> 					<strong class="jxr_keyword">synchronized</strong>(_text) {
-<a class="jxr_linenumber" name="L181" href="#L181">181</a> 						_text.append((<strong class="jxr_keyword">char</strong>)value);
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> 						_text.append((<strong class="jxr_keyword">char</strong>) value);
 <a class="jxr_linenumber" name="L182" href="#L182">182</a> 					}
 <a class="jxr_linenumber" name="L183" href="#L183">183</a> 				}
 <a class="jxr_linenumber" name="L184" href="#L184">184</a> 			} 

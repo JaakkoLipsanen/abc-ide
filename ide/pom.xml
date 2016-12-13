@@ -43,8 +43,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.flai.ide</param>
+                        <param>com.flai.ide.MiscHelper</param>
+                        <param>com.flai.ide.StringHelper</param>
                         <param>com.flai.ide.model*</param>
+                        <param>com.flai.ide.viewmodels*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.flai.ide.*</param>

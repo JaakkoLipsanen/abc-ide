@@ -1,12 +1,14 @@
 # abc-ide
-An IDE/code snippet editor made with Java + JavaFX for Javalabra course.
-Will support auto-indent, syntax higlighting and running/compiling files with a click of a button
+An code snippet editor made with Java + JavaFX for Javalabra course.
+Supports auto-indent, syntax higlighting and compiling and running files with a click of a button. stdin/stdout of the program is captured and shown on a console inside the program.
+
+![Screenshot](screenshot.png)
 
 # Documentation
-- [Tuntikirjaus](/dokumentaatio/tuntikirjaus.md)
-- [Aiheenmäärittely](/dokumentaatio/aihemäärittely.md)
-- [Luokkakaavio](/dokumentaatio/luokkakaavio.png)
-- [Käyttöohje](/dokumentaatio/kayttoohje.md)
+- [Time usage](/dokumentaatio/tuntikirjaus.md)
+- [Design document (in Finnish)](/dokumentaatio/aihemäärittely.md)
+- [Class Diagram](/dokumentaatio/luokkakaavio.png)
+- [Instructions (in Finnish)](/dokumentaatio/kayttoohje.md)
 
-- [PIT-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/pit-raportti/index.html)
-- [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
+- [PIT-report](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/pit-raportti/index.html)
+- [Checkstyle-report](https://htmlpreview.github.io/?https://github.com/JaakkoLipsanen/abc-ide/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
